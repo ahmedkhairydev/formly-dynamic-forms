@@ -7,7 +7,6 @@ import { MaterialModule } from './sub-modules/material/material.module';
 import { PrimeNgModule } from './sub-modules/material/primeng.module';
 import { DropdownModule } from './components';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -17,7 +16,7 @@ import { DropdownModule } from './components';
     ReactiveFormsModule,
     MaterialModule,
     PrimeNgModule,
-    
+
     DropdownModule,
   ],
   exports: [

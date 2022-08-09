@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@youxel/form';
-
 import { ConstructSubmissionService } from 'src/app/shared/services/construct-submission/construct-submission.service';
+import { FormField } from 'src/app/shared/interfaces/form-field.interface';
+import { MappingJsonData } from 'src/app/shared/services/mapping-data.service';
 
 @Component({
   selector: 'app-poc',
@@ -15,11 +15,23 @@ export class PocComponent implements OnInit {
 
   form!: FormGroup;
 
-  fields: FormlyFieldConfig[] = []
+  fields: FormField[] = [];
 
-  constructor(private constructSubmissionService: ConstructSubmissionService) { }
+  constructor(private mappingJsonData: MappingJsonData, private constructSubmissionService: ConstructSubmissionService) { }
 
   ngOnInit(): void {
+    this.fields = this.mappingJsonData.mappingData();
+    this.model = {
+      classId: null,
+      workTypeId: null,
+      department: null,
+      region: null,
+      city: null,
+      building: null,
+      floor: null,
+      isActive: null,
+      fullName: null,
+    };
   }
 
   submit() {
