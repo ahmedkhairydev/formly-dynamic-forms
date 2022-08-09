@@ -1,0 +1,29 @@
+input {
+  border: 1px solid $grey-11;
+  background-color: $input-background;
+  @include input-placeholder {
+    color: $grey-14;
+  }
+  @include border-radius(8px);
+  &:focus,
+  &:active {
+    outline: none;
+    border-color: $primary;
+    color: $black;
+    box-shadow: none;
+  }
+
+  &.search-input {
+    background-color: transparent;
+    border: none;
+    // border-bottom: 2px solid $hawakes-blue;
+    @include border-radius(0);
+  }
+
+  &.ng-invalid.ng-touched {
+    border: 1px solid $crimson;
+    @include input-placeholder {
+      color: $crimson;
+    }
+  }
+}

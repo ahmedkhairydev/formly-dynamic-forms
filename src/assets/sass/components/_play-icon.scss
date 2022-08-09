@@ -1,0 +1,14 @@
+.play-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__icon {
+        svg {
+            fill: $white;
+        }
+    }
+}

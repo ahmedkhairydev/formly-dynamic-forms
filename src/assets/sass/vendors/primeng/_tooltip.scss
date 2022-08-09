@@ -1,0 +1,54 @@
+//tooltip
+.mob-tooltip {
+  &.p-tooltip {
+    .p-tooltip-text {
+      background-color: var(--black) !important;
+      @include font-size(16);
+      @include fontFamily($font-family-secondary-en);
+      line-height: 1.1;
+      padding: 1rem 0.8rem !important;
+      border-radius: 8px;
+    }
+
+    &.p-tooltip-top {
+      .p-tooltip-arrow {
+        display: none !important;
+      }
+    }
+
+    &.p-tooltip-bottom {
+      .p-tooltip-arrow {
+        display: none !important;
+      }
+    }
+  }
+}
+.mob-tooltip-one {
+  &.p-tooltip {
+    .p-tooltip-text {
+      background-color: var(--black) !important;
+      @include font-size(12);
+      @include fontFamily($font-family-secondary-en);
+      line-height: 1.1;
+      padding: 1rem 0.8rem !important;
+      border-radius: 8px;
+    }
+
+    &.p-tooltip-top {
+      .p-tooltip-arrow {
+        display: none !important;
+      }
+    }
+
+    &.p-tooltip-bottom {
+      .p-tooltip-arrow {
+        display: none !important;
+      }
+    }
+  }
+}
+.p-link{
+  &:focus{
+    box-shadow: none !important;
+  }
+}

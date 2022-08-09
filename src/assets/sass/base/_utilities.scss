@@ -1,0 +1,117 @@
+// width
+
+.wide-50 {
+  width: 50%;
+  @include maxdesktop {
+    width: 100%;
+  }
+}
+
+.wide-60 {
+  width: 60%;
+  @include maxdesktop {
+    width: 100%;
+  }
+}
+
+.wide-75 {
+  width: 75%;
+  @include maxdesktop {
+    width: 100%;
+  }
+}
+
+.wide-80 {
+  width: 80%;
+  @include maxdesktop {
+    width: 100%;
+  }
+}
+
+.wide-90 {
+  width: 90%;
+  @include maxdesktop {
+    width: 100%;
+  }
+}
+// classes
+
+.no-decoration {
+  text-decoration: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.primary-link {
+  color: $primary;
+  &:hover,
+  &:focus {
+    color: $primary;
+  }
+}
+
+.white-link {
+  &:hover,
+  &:focus {
+    color: $white;
+  }
+}
+
+.black-link {
+  &:hover,
+  &:focus {
+    color: $black;
+  }
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: unset !important;
+}
+
+.background-gradient-card {
+  @include gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 0%, horizontal);
+}
+
+.primary-gradient {
+  @include gradient($primary-light 0%, $primary 100%, vertical);
+}
+
+@include includeRtl() {
+  .icon-rotate {
+    transform: rotate(180deg) !important;
+  }
+
+  .icon-reverse-rotate {
+    transform: rotate(360deg) !important;
+  }
+}
+
+/** spacing **/
+
+.m-start-15 {
+  @include inline-style(margin, start, 15px);
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.break-word {
+  word-break: break-word;
+}
+
+.card-shadow {
+  @include box-shadow($horiz: 0px, $vert: 0px, $blur: 16px, $spread: 0px, $color: rgba(0, 0, 0, 0.16));
+}
+
+.box-shadow-1 {
+  box-shadow: $box-shadow-1;
+}
+
+.required-field {
+  color: $crimson;
+}

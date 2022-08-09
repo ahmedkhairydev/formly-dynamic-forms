@@ -1,0 +1,200 @@
+@font-face {
+  font-family: primary-en;
+  src: url(../../assets/fonts/Scandia/Scandia-Light.otf) format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: primary-en;
+  src: url(../../assets/fonts/Scandia/Scandia-Regular.otf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: primary-en;
+  src: url(../../assets/fonts/Scandia/Scandia-Medium.otf) format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: primary-en;
+  src: url(../../assets/fonts/Scandia/Scandia-Bold.otf) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: secondary-en;
+  src: url(../../assets/fonts/OpenSans/OpenSans-Light.ttf) format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: secondary-en;
+  src: url(../../assets/fonts/OpenSans/OpenSans-Regular.ttf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: secondary-en;
+  src: url(../../assets/fonts/OpenSans/OpenSans-Semibold.ttf) format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: secondary-en;
+  src: url(../../assets/fonts/OpenSans/OpenSans-Bold.ttf) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: secondary-en;
+  src: url(../../assets/fonts/OpenSans/OpenSans-ExtraBold.ttf)
+    format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: font-en-1;
+  src: url(../../assets/fonts/SimplonNorm/SimplonNorm-Light.otf)
+    format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: font-en-1;
+  src: url(../../assets/fonts/SimplonNorm/SimplonNorm-Regular.otf)
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: font-en-1;
+  src: url(../../assets/fonts/SimplonNorm/SimplonNorm-Medium.otf)
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: font-en-1;
+  src: url(../../assets/fonts/SimplonNorm/SimplonNorm-bold.otf)
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: primary-ar;
+  src: url(../../assets/fonts/Arabic/sst-arabic/sst-arabic-medium.ttf)
+    format('truetype');
+  // font-weight: 100;
+  // font-style: normal;
+  // font-stretch: normal;
+}
+
+@font-face {
+  font-family: secondary-ar;
+  src: url(../../assets/fonts/Arabic/sst-arabic-roman/SSTArabicRoman.ttf)
+    format('truetype');
+  // font-weight: 100;
+  // font-style: normal;
+  // font-stretch: normal;
+}
+
+.header-1 {
+  @include fontFamily($font-family-primary-en);
+}
+
+.header-2 {
+  @include fontFamily($font-family-secondary-en);
+}
+
+.sub-heading {
+  @include fontFamily($font-family-primary-en);
+}
+
+.description {
+  @include fontFamily($font-family-secondary-en);
+}
+
+.body-text {
+  @include fontFamily($font-family-secondary-en);
+}
+
+.link-text {
+  @include fontFamily($font-family-secondary-en);
+}
+
+.numbers-text {
+  @include fontFamily($font-family-secondary-en);
+}
+
+.button-text {
+  @include fontFamily($font-family-en-1);
+}
+
+.primary-ar {
+  @include fontFamily($font-family-primary-ar);
+}
+
+.secondary-ar {
+  @include fontFamily($font-family-secondary-ar);
+}
+
+.lang-ar {
+  .header-1 {
+    @include fontFamily($font-family-primary-ar);
+  }
+
+  .header-2 {
+    @include fontFamily($font-family-secondary-ar);
+  }
+
+  .sub-heading {
+    @include fontFamily($font-family-primary-ar);
+  }
+
+  .description {
+    @include fontFamily($font-family-secondary-ar);
+  }
+
+  .body-text {
+    @include fontFamily($font-family-secondary-ar);
+  }
+
+  .link-text {
+    @include fontFamily($font-family-secondary-ar);
+  }
+
+  .numbers-text {
+    @include fontFamily($font-family-secondary-ar);
+  }
+
+  .button-text {
+    @include fontFamily($font-family-ar-1);
+  }
+}

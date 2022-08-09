@@ -1,0 +1,138 @@
+/* *********** colors *********** */
+/* primary colors */
+$primary: var(--primary);
+$primary-light: var(--primary-light);
+$primary-light-2: var(--primary-light-2);
+$primary-dark: var(--dark-blue);
+$primary-light-bg: var(--primary-light-bg);
+$black: var(--black);
+$white: var(--white);
+
+/* Secondry colors */
+$bright-grey: var(--bright-grey);
+$hawakes-blue: var(--hawakes-blue);
+$solitude: var(--solitude);
+$secondary: var(--secondary);
+
+$body-background: var(--body-background);
+$dropdown-background: var(--dropdown-background);
+$dropdown-background-2: var(--dropdown-background-2);
+/* third colors */
+$grape: var(--grape);
+$bright-turquoise: var(--bright-turquoise);
+$orange: var(--orange);
+$orange-dark: var(--orange-dark);
+$french-grey: var(--french-grey);
+$purple-magenta: var(--purple-magenta);
+$rose-red: var(--rose-red);
+
+/*Alert colors*/
+$red: var(--red);
+$crimson: var(--crimson);
+
+/* Text */
+$black-text: var(--black);
+$primary-text: var(--primary);
+$light-grey-text: var(--grey-14);
+$grey-text: var(--bright-grey);
+
+$body-background: var(--body-background);
+$body-background-2: var(--body-background-2);
+
+/* inputs */
+$input-background: var(--input-background);
+$border-inactive: var(--border-inactive);
+$border-active: var(--border-active);
+$dropdown-background-2: var(--dropdown-background-2);
+
+/* Greyscale */
+$grey-98: var(--grey-98);
+$grey-95: var(--grey-95);
+$grey-90: var(--grey-90);
+$grey-85: var(--grey-85);
+$grey-80: var(--grey-80);
+$grey-75: var(--grey-75);
+$grey-70: var(--grey-70);
+$grey-60: var(--grey-60);
+$grey-50: var(--grey-50);
+$grey-45: var(--grey-45);
+$grey-40: var(--grey-40);
+$grey-30: var(--grey-30);
+$grey-20: var(--grey-20);
+$grey-15: var(--grey-15);
+$grey-16: var(--grey-16);
+$grey-10: var(--grey-10);
+$grey-11: var(--grey-11);
+$grey-12: var(--grey-12);
+$grey-13: var(--grey-13);
+$grey-14: var(--grey-14);
+$grey-14-rgb: var(--grey-14-rgb);
+$grey-17: var(--grey-17);
+
+// rgba
+$rgb-black: var(--rgb-black);
+
+// blues
+$dark-blue: var(--dark-blue);
+
+/** greens */
+$green: var(--green);
+
+// box shadow
+$box-shadow-1: var(--box-shadow-1);
+$box-shadow-2: var(--box-shadow-2);
+$box-shadow-4: var(--box-shadow-4);
+/*** ***** ******* End color ***** ****** */
+
+/** spacing **/
+
+$space-xs: var(--space-xs);
+$space-s: var(--space-s);
+$space-base: var(--space-base);
+$space-m: var(--space-m);
+$space-l: var(--space-l);
+$space-xl: var(--space-xl);
+$space-xxl: var(--space-xxl);
+
+// fonts
+$font-family-primary-en: 'primary-en';
+$font-family-secondary-en: 'secondary-en';
+$font-family-en-1: 'font-en-1';
+$font-family-primary-ar: 'primary-ar';
+$font-family-secondary-ar: 'secondary-ar';
+$font-family-ar-1: 'primary-ar';
+
+// font-weights
+$font-weight-light: var(--font-weight-light);
+
+$font-weight-regular: var(--font-weight-regular);
+
+$font-weight-medium: var(--font-weight-medium);
+
+$font-weight-semi-bold: var(--font-weight-semi-bold);
+
+$font-weight-bold: var(--font-weight-bold);
+
+$font-weight-extra-bold: var(--font-weight-extra-bold);
+
+/** font sizes variables  */
+$font-size-72: var(--font-size-72);
+$font-size-48: var(--font-size-48);
+$font-size-34: var(--font-size-34);
+$font-size-32: var(--font-size-32);
+$font-size-28: var(--font-size-28);
+$font-size-24: var(--font-size-24);
+$font-size-20: var(--font-size-24);
+$font-size-18: var(--font-size-18);
+$font-size-16: var(--font-size-16);
+$font-size-12: var(--font-size-12);
+
+/* spacing for sections variables*/
+
+$m-section-top: var(--m-section);
+
+$m-section-bottom: var(--m-section);
+
+$p-section-end: var(--p-section);
+
+$p-section-start: var(--p-section);

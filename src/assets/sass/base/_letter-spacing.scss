@@ -1,0 +1,15 @@
+$letter-spacing-8: 0.8px;
+$letter-spacing-1-2: 1.2px;
+$letter-spacing-n-48: -0.48px;
+
+.letter-spacing-8 {
+  letter-spacing: $letter-spacing-8;
+}
+
+.letter-spacing-1-2 {
+  letter-spacing: $letter-spacing-1-2;
+}
+
+.letter-spacing-n-48 {
+  letter-spacing: $letter-spacing-n-48;
+}

@@ -1,0 +1,263 @@
+.date-picker {
+    label {
+        color: $grey-12;
+        @include font-size(16);
+        font-weight: $font-weight-medium;
+        @include fontFamily($font-family-primary-en);
+        padding: 0;
+    }
+    .description {
+        color: $grey-14;
+        @include font-size(14);
+        font-weight: $font-weight-medium;
+        @include fontFamily($font-family-primary-en);
+    }
+    &__body {
+        .date {
+            height: 50px !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $white;
+            height: 34px;
+            border-radius: 5px;
+            border: solid 1px $grey-11;
+            box-shadow: 0 0 10px 0 $box-shadow-1;
+            position: relative;
+            
+            input {
+                overflow: hidden;
+                // padding: 10px 15px;
+                padding: 6px 10px;
+                color: $grey-70 !important;
+                // width: 100%;
+                // min-width: 190px;
+                background-color: $white;
+                border: 0;
+                &::placeholder {
+                    max-width: max-content;
+                }
+            }
+
+            .icon {
+                position: absolute;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                padding: 6px 22px;
+            }
+
+            .mat-date-range-input-start-wrapper {
+                position: unset !important;
+                display: flex;
+                align-items: center;
+                width: calc(30% - 4px);
+                max-width: unset;
+                .mat-start-date {
+                    position: unset !important;
+                    width: max-content;
+                }
+            }
+
+            mat-datepicker-toggle {
+                .mat-icon-button {
+                    width: unset !important;
+                    &::focus {
+                        background-color: unset !important;
+                    }
+                    .mat-button-wrapper {
+                        .icon {
+                            svg {
+                                fill: $grey-50;
+                            }
+                        }
+                    }
+                }
+                position: absolute;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                padding: 6px 22px;
+            }
+            
+
+            .mat-date-range-input {
+                .mat-date-range-input-container {
+                    .mat-date-range-input-inner {
+                        line-height: 0;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        .mat-button-focus-overlay {
+            background: none !important;
+        }
+
+        .mat-button-ripple-round {
+            display: none;
+        }
+
+        .date-time {
+            height: 50px !important;
+            align-items: center;
+            background-color: $white;
+            height: 34px;
+            border-radius: 5px;
+            // padding: 10px 15px;
+            padding: 6px 10px;
+            box-shadow: 0 0 10px 0 $box-shadow-1;
+        }
+
+        &__days-count {
+            .date-count {
+                display: block;
+
+                width: 100%;
+
+                height: 50px;
+
+                padding: 10px 15px;
+
+                border-radius: 5px;
+
+                box-shadow: 0 0 10px 0 $box-shadow-1;
+
+                border: solid 1px $grey-30;
+
+                background-color: $white;
+
+                font-family: SSTArabic-Roman;
+
+                font-size: 1.4rem;
+
+                color: $grey-50;
+            }
+        }
+
+        .mat-button-focus-overlay {
+            background: none !important;
+        }
+
+        .mat-button-ripple-round {
+            display: none;
+        }
+    }
+}
+
+.mat-datepicker-content {
+    height: max-content !important;
+    padding: 0 25px 25px;
+    margin-top: 24px;
+    @include border-radius(8px);
+
+    .mat-calendar {
+        .mat-calendar-header {
+            .mat-calendar-controls {
+                .mat-calendar-period-button {
+                    color: $grey-12;
+                    @include font-size(16);
+                    font-weight: $font-weight-medium;
+                    @include fontFamily($font-family-primary-en);
+                    position: relative;
+                    .mat-button-wrapper {
+                        .mat-calendar-arrow {
+                            display: none;
+                            svg {
+                                fill: $primary;
+                            }
+                            margin: 8px 10px;
+                        }
+                    }
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 10px;
+                        background-image: url("../../../assets/media/icons/forms/angle-down.svg");
+                        background-size: 100%;
+                        width: 15px;
+                        height: 15px;
+                        margin-inline-start: 5px;
+                    }
+                    &[aria-label="Choose date"] {
+                        &::after {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+                .mat-calendar-next-button:not(:disabled),
+                .mat-calendar-previous-button:not(:disabled) {
+                    color: $primary !important;
+                }
+            }
+        }
+        .mat-calendar-content {
+            mat-month-view {
+                .mat-calendar-table {
+                    .mat-calendar-table-header {
+                        color: $hawakes-blue;
+                        @include font-size(16);
+                        font-weight: $font-weight-medium;
+                        @include fontFamily($font-family-primary-en);
+                        text-transform: uppercase;
+                        abbr[title] {
+                            text-decoration: none !important;
+                        }
+                    }
+                    .mat-calendar-body-in-range {
+                        &::before {
+                            background: rgba($color: $secondary, $alpha: 0.3) !important;
+                        }
+                    }
+                    .mat-calendar-body-cell-container {
+                        color: $grey-12;
+                        @include font-size(16);
+                        font-weight: $font-weight-medium;
+                        @include fontFamily($font-family-primary-en);
+                        width: 44px !important;
+                    }
+
+                    .mat-calendar-body-selected {
+                        background-color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.mat-date-range-input {
+    .mat-date-range-input-container {
+        .mat-date-range-input-start-wrapper {
+            width: unset !important;
+
+            .mat-date-range-input-inner {
+                width: 80px !important;
+                height: 100%;
+            }
+
+            .mat-date-range-input-mirror {
+                display: none !important;
+            }
+        }
+    }
+
+    .mat-datepicker-toggle {
+        .mat-icon-button {
+            .mat-button-wrapper {
+                svg {
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
+
+.mat-datepicker-input {
+    border: 0 !important;
+}
+
+.mat-calendar-body-selected {
+    background-color: $primary;
+    border: 0;
+}

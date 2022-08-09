@@ -1,0 +1,286 @@
+:root {
+  /* root primary colors */
+  --primary: #008cff;
+  --primary-rgb: 0, 140, 255;
+  --primary-light: #0464e6;
+  --primary-light-2: #cce8ff;
+  --primary-light-bg: #CCE8FF;
+  --black: #000000;
+  --white: #fff;
+
+  /* Secondry colors */
+  --secondary: #d5d8df;
+  --secondary2: #0000004d;
+  --bright-grey: #51565b;
+  --hawakes-blue: #d5d8df;
+  --light-blue: #ebf6ff;
+  --solitude: #f2f4f8;
+
+  --body-background: #f2f4f8;
+  --body-background-2: #dfe3ea;
+  --white-background: #fff;
+
+  --green: #00bf99;
+  /* third colors*/
+  --grape: #8f0051;
+  --bright-turquoise: #0af6ea;
+  --orange: #ffb911;
+  --orange-dark: #f99600;
+  --french-grey: #babec6;
+  --purple-magenta: #703081;
+  --rose-red: #cf0048;
+  --dark-blue: #003e71;
+
+  /* root alert */
+  --red: #ff0000;
+  --crimson: #cf0048;
+
+  /* inputs */
+  --border-inactive: #f9fbff;
+  --border-active: #008cff;
+  --input-background: #f9fbff;
+  --dropdown-background: #9bd2ff;
+
+  --dropdown-background-2: #e6f4ff;
+
+  /* Greyscale */
+  --grey-98: #f3f3f3;
+  --grey-95: #ededed;
+  --grey-90: #e3e3e3;
+  --grey-85: #d9d9d9;
+  --grey-80: #cccccc;
+  --grey-75: #c0c0c0;
+  --grey-70: #b0b0b0;
+  --grey-60: #999999;
+  --grey-50: #808080;
+  --grey-45: #727272;
+  --grey-40: #696969;
+  --grey-30: #4d4d4d;
+  --grey-20: #363636;
+  --grey-15: #222222;
+  --grey-10: #171717;
+  --grey-11: #b9bfc6;
+  --grey-12: #232a2d;
+  --grey-13: #232a2d;
+  --grey-14: #868d95;
+  --grey-14-rgb: 134, 141, 149;
+  --grey-15: #d8dbe1;
+  --grey-16: #51565b;
+  --grey-17: #263238;
+  // blues
+  --dark-blue: 0, 33, 61;
+
+  /* Shadows */
+  --card-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.16);
+  --box-shadow-1: 0 8px 16px 0 rgba(0, 0, 0, 0.16);
+  --box-shadow-2: 0px 0px 16px rgba(0, 0, 0, 0.16);
+  --box-shadow-3: 0px 0px 5px 0px rgba(0, 0, 0, 0.16);
+  --box-shadow-4: 0px 0px 5px rgba(0, 0, 0, 0.16);
+  --box-shadow-5: 2px 1px 9px 3px rgb(0 0 0 / 16%);
+
+  --rgb-black: 0, 0, 0;
+}
+/*background gradient*/
+.background-gradient-1 {
+  background: linear-gradient(
+    269.25deg,
+    rgba(0, 0, 0, 0.0001) 0.59%,
+    rgba(0, 0, 0, 0.35) 99.31%
+  );
+  background-blend-mode: multiply;
+}
+/* ********** classes ************ */
+/* primary colors */
+.primary-color {
+  color: var(--primary);
+}
+
+.primary-color-light {
+  color: var(--primary-light);
+}
+
+.primary-color-light-2 {
+  color: var(--primary-light-2);
+}
+
+.primary-background {
+  background-color: var(--primary);
+}
+
+.black {
+  color: var(--black);
+}
+.white {
+  color: var(--white);
+}
+
+/* Secondry colors */
+.bright-grey {
+  color: var(--bright-grey);
+}
+
+.hawakes-blue {
+  color: var(--hawakes-blue);
+}
+
+.solitude {
+  color: var(--solitude);
+}
+
+.body-background {
+  background-color: var(--body-background);
+}
+
+.body-background-2 {
+  background-color: var(--body-background-2);
+}
+
+.white-background {
+  background-color: var(--white-background);
+}
+
+.secondary {
+  color: var(--secondary);
+}
+.secondary-2 {
+  color: var(--secondary2);
+}
+/* third colors */
+.grape {
+  color: var(--grape);
+}
+.grey-12 {
+  color: var(---grey-12);
+}
+.bright-turquoise {
+  color: var(--bright-turquoise);
+}
+.orange {
+  color: var(--orange);
+}
+.french-grey {
+  color: var(--french-grey);
+}
+.purple-magenta {
+  color: var(--purple-magenta);
+}
+.rose-red {
+  color: var(--rose-red);
+}
+
+/*Alert colors*/
+.red {
+  color: var(--red);
+}
+.crimson {
+  color: var(--crimson);
+}
+
+/* Text */
+.black-text {
+  color: var(--black);
+}
+.primary-text {
+  color: var(--primary);
+}
+.light-grey-text {
+  color: var(--grey-14);
+}
+.grey-text {
+  color: var(--bright-grey);
+}
+
+/* inputs */
+
+.dropdown-background {
+  background-color: var(--dropdown-background);
+}
+
+.input-background {
+  background-color: var(--input-background);
+}
+
+/* Greyscale */
+.grey-98 {
+  color: var(--grey-98);
+}
+.grey-95 {
+  color: var(--grey-95);
+}
+.grey-90 {
+  color: var(--grey-90);
+}
+.grey-85 {
+  color: var(--grey-85);
+}
+.grey-80 {
+  color: var(--grey-80);
+}
+.grey-75 {
+  color: var(--grey-75);
+}
+.grey-70 {
+  color: var(--grey-70);
+}
+.grey-60 {
+  color: var(--grey-60);
+}
+.grey-50 {
+  color: var(--grey-50);
+}
+.grey-45 {
+  color: var(--grey-45);
+}
+.grey-40 {
+  color: var(--grey-40);
+}
+.grey-30 {
+  color: var(--grey-30);
+}
+.grey-20 {
+  color: var(--grey-20);
+}
+.grey-15 {
+  color: var(--grey-15);
+}
+.grey-10 {
+  color: var(--grey-10);
+}
+
+.grey-12 {
+  color: var(--grey-12);
+}
+
+.grey-13 {
+  color: var(--grey-13);
+}
+.grey-11 {
+  color: var(--grey-11);
+}
+
+.grey-14 {
+  color: var(--grey-14);
+}
+
+.grey-15 {
+  color: var(--grey-15);
+}
+
+.grey-16 {
+  color: var(--grey-16);
+}
+
+.dark-blue {
+  color: var(--dark-blue);
+}
+
+.green {
+  color: var(--green);
+}
+
+.light-blue {
+  color: var(--light-blue);
+}
+/*
+* shadows
+*/

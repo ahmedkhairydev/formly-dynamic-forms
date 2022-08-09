@@ -1,0 +1,53 @@
+// abstracts
+@import 'abstracts/colors';
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// base
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/font-sizes';
+@import 'base/font-weight';
+@import 'base/sizing';
+@import 'base/line-height';
+@import 'base/letter-spacing';
+@import 'base/spacing';
+@import 'base/utilities';
+
+// components
+@import 'components/inputs';
+@import 'components/buttons';
+@import 'components/slider';
+@import 'components/play-icon';
+@import 'components/time-picker';
+@import 'components/dropdown';
+@import 'components/activity-center';
+@import 'components/chat-text';
+
+// Components : Form controls
+
+@import 'components/form-controls/auto-complete';
+@import 'components/form-controls/checkbox';
+@import 'components/form-controls/date-picker';
+@import 'components/form-controls/date-time-picker-range';
+@import 'components/form-controls/date-time-picker';
+@import 'components/form-controls/dropdown';
+@import 'components/form-controls/file-upload';
+@import 'components/form-controls/info-indicator';
+@import 'components/form-controls/label';
+@import 'components/form-controls/link';
+@import 'components/form-controls/radio-button';
+@import 'components/form-controls/switch';
+@import 'components/form-controls/table';
+@import 'components/form-controls/textarea';
+@import 'components/form-controls/textbox';
+@import 'components/form-controls/time-picker';
+
+//layout
+@import 'layout/auth';
+@import 'layout/requests';
+// vendors
+@import 'vendors/primeng/tooltip';
+@import 'vendors/primeng/dropdown';
+@import 'vendors/angular-material/dialog.scss';
