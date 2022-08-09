@@ -1,0 +1,24 @@
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+.activity-center-chat {
+    .custom-input-form {
+        .p-inputtextarea {
+            resize: none;
+            @include scrollbars(1px, $white, $white, 1px);
+            width: 34.6rem;
+            font-size: 16px;
+            background: transparent;
+            border: 0;
+            color: $light-grey-text;
+            font-weight: 400;
+            padding-top: 12px !important;
+        }
+    }
+
+    .p-field {
+        margin: 0px !important;
+    }
+    .mob-close:before{
+        color:$rose-red;
+    }}

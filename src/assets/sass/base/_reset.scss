@@ -1,0 +1,25 @@
+html {
+  font-size: 62.5%;
+  height: 100%;
+  overflow-x: hidden;
+  @include scrollbars(9px, transparent, $secondary, 100px);
+}
+
+body {
+  font-size: 1.6rem !important;
+  height: 100%;
+
+  &.rtl {
+    direction: rtl;
+  }
+}
+
+ul {
+  padding: 0;
+  list-style-type: none !important;
+}
+
+.p-inputtext:enabled:focus {
+  box-shadow: none !important;
+  border-color: none !important;
+}

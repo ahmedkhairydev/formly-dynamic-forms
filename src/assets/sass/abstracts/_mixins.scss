@@ -1,0 +1,334 @@
+@use "sass:math";
+
+/* font size
+* example => font-size(16)
+*/
+@mixin font-size($value: 16) {
+  font-size: ($value) + px; // callback for old browser
+  font-size: math.div($value, 10) + rem !important;
+}
+
+/*
+* border-radius()
+* example => border-radius(8px)
+*/
+@mixin border-radius($value: 3px) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value !important;
+  // keeps background from busting out of border
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+/*
+* opacity()
+* ex: opacity(.9)
+*/
+@mixin opacity($value: 0.5) {
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" $value * 100 ")";
+  filter: alpha(opacity= $value * 100);
+  zoom: 1;
+}
+
+/*
+* box-shadow()
+*/
+
+@mixin box-shadow($horiz: 0.5em, $vert: 0.5em, $blur: 0px, $spread: 0px, $color: #000000) {
+  -webkit-box-shadow: $horiz $vert $blur $spread $color;
+  -moz-box-shadow: $horiz $vert $blur $spread $color;
+  box-shadow: $horiz $vert $blur $spread $color;
+}
+/*
+* hover-active-focus()
+* ex: hover-active-focus(outline, none)
+*/
+@mixin hover-active-focus($property, $value) {
+  &:hover,
+  &:active,
+  &:focus {
+    #{$property}: $value;
+  }
+}
+
+/*
+* input-placeholder()
+* ex: input,
+   textarea {
+       @include input-placeholder {
+           color: $grey;
+       }
+   }
+*/
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+/*
+* `gradient()`
+* @include gradient(#07c, #06f, vertical);
+*/
+// background: linear-gradient(180deg, #0464E6 0%, #008CFF 100%);
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  @if $orientation == "vertical" {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == "horizontal" {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+
+/*
+* `prefix()`
+*  ex: @include prefix('box-sizing', 'border-box', moz webkit);
+*/
+@mixin prefix($property, $value, $vendors: webkit moz ms o, $default: true) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  @if $default {
+    #{$property}: #{$value};
+  }
+}
+
+/*
+* `center-vertically()`
+* ex: @include center-vertically;
+*/
+
+@mixin center-vertically {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include prefix(transform, translate(-50%, -50%), "webkit" "ms");
+}
+
+/*
+* `space()`
+* ex:  @include space(margin, top, $space-xs);
+*/
+@mixin space($type: margin, $direction: all, $amount: $space-m) {
+  @if $type == padding {
+    @if $direction == all {
+      padding: $amount;
+    } @else if $direction == top {
+      padding-top: $amount;
+    } @else if $direction == left {
+      padding-left: $amount;
+    } @else if $direction == right {
+      padding-right: $amount;
+    } @else if $direction == y {
+      padding-top: $amount !important;
+      padding-bottom: $amount !important;
+    } @else if $direction == x {
+      padding-left: $amount !important;
+      padding-right: $amount !important;
+    } @else {
+      padding-bottom: $amount;
+    }
+  } @else {
+    @if $direction == all {
+      margin: $amount;
+    } @else if $direction == top {
+      margin-top: $amount;
+    } @else if $direction == left {
+      margin-left: $amount;
+    } @else if $direction == right {
+      margin-right: $amount;
+    } @else {
+      margin-bottom: $amount;
+    }
+  }
+}
+
+//Padding mixin
+/** @include padding(1px, null, 3px, 4px); */
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+//Margin mixin
+/** e.g: @include margin(1px, 2px, null, 4px); */
+@mixin margin($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+/*
+* `absolute-position()`
+* ex: absolute-position(0,0,0,50%)
+*/
+@mixin absolute-position($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+  right: $right;
+  top: $top;
+}
+
+@mixin fontFamily($fontFamily) {
+  font-family: $fontFamily;
+}
+
+@mixin rtl() {
+  :host-context(body.lang-ar) {
+    @content;
+  }
+}
+
+@mixin includeRtl() {
+  body.lang-ar {
+    @content;
+  }
+}
+
+/** Media query**/
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@mixin phone {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@mixin mintablet {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+/* Small Devices, Tablets */
+@mixin minlandscape {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+/* Medium Devices, Desktops */
+@mixin mindesktop {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+/* Large Devices, Wide Screens */
+
+/* Medium Devices, Desktops */
+@mixin minwidescreen {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@mixin maxphone {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@mixin maxtablet {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+/* Small Devices, Tablets */
+@mixin maxlandscape {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+/* Medium Devices, Desktops */
+@mixin maxdesktop {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+/* Large Devices, Wide Screens */
+
+/* Medium Devices, Desktops */
+@mixin maxwidescreen {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+/* with minimum and maximum screen sizes input*/
+@mixin minmax($minimum, $maximum) {
+  @media (min-width: $minimum) and (max-width: $maximum) {
+    @content;
+  }
+}
+/* inline-style
+* example => inline-style(margin,16)
+*/
+@mixin inline-style($type: margin, $direction: start, $value: 5px) {
+  @if $type == padding {
+    @if ($direction == start) {
+      padding-inline-start: $value;
+    } @else {
+      padding-inline-end: $value;
+    }
+  } @else {
+    @if ($direction == start) {
+      margin-inline-start: $value;
+    } @else {
+      margin-inline-end: $value;
+    }
+  }
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color, $border-radius: 0) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $background-color;
+    border-radius: $border-radius;
+    &:hover {
+      background-color: $background-color;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.activity-center-tabs {
+  &__content {
+    &-list {
+      background-color: $body-background;
+      @include border-radius(8px);
+      margin-inline-end: 2rem;
+    }
+    &-details {
+      background: $body-background;
+      @include border-radius(8px);
+    }
+    &-filter {
+      p-dropdown {
+        .p-dropdown {
+          line-height: unset !important;
+          min-height: unset !important;
+          border: unset !important;
+          background: unset !important;
+          .p-dropdown-label {
+            font-family: $font-family-en-1 !important;
+          }
+          .p-dropdown-trigger {
+            width: unset !important;
+          }
+          .p-dropdown-panel {
+            width: 250px;
+          }
+        }
+      }
+    }
+  }
+}

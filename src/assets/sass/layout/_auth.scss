@@ -1,0 +1,16 @@
+.login-wrapper {
+  &__content {
+    padding-bottom: 2rem;
+    // padding-top: 7rem;
+    .welcome-img {
+      width: 5.2rem;
+    }
+    .link {
+      letter-spacing: 0.8px;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}

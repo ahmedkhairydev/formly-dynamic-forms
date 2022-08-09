@@ -1,0 +1,283 @@
+// margin-inline-end: 2rem;
+$p-section: var(--p-section);
+$p-section-1: var(--p-section-1);
+$m-section: var(--m-section);
+$p-header: var(--p-header);
+$p-35: var(--p-35);
+$p-4-8: var(--p-4-8);
+$p-4-6: var(--p-4-6);
+$p-8-6: var(--p-8-6);
+$p-4: var(--p-4);
+$p-3: var(--p-3);
+$p-3-5: var(--p-3-5);
+$p-2: var(--p-2);
+$p-1-5: var(--p-1-5);
+$p-10: var(--p-10);
+$p-11: var(--p-11);
+$p-12: var(--p-12);
+$p-13: var(--p-13);
+$p-14: var(--p-14);
+$p-17: var(--p-17);
+$m-card: var(--m-card);
+$m-3: var(--m-3);
+$m-6: var(--m-6);
+
+$space-10: var(--space-10);
+
+:root {
+  --p-section: 17rem;
+  --p-section-1: 21.4rem;
+  --m-section: 8rem;
+  --p-header: 10rem;
+  --p-35: 34rem;
+  --p-4-8: 4.8rem;
+  --p-4-6: 4.6rem;
+  --p-8-6: 8.6rem;
+  --p-4: 4rem;
+  --p-3: 3rem;
+  --p-3-5: 3.5rem;
+  --p-2: 2rem;
+  --p-1-5: 1.5rem;
+  --p-10: 10rem;
+  --p-11: 11rem;
+  --p-12: 12rem;
+  --p-13: 13rem;
+  --p-14: 14rem;
+  --p-17: 17rem;
+  --m-card: 3.2rem;
+  --m-3: 3rem;
+  --m-6: 6rem;
+
+  --space-10: 10rem;
+}
+
+.m-inline-end-2 {
+  @include inline-style(margin, end, 2rem);
+}
+
+.p-inline-start-7 {
+  padding-inline-start: 7rem;
+}
+
+.p-inline-start-17 {
+  padding-inline-start: $p-2;
+  @include mindesktop {
+    padding-inline-start: $p-17;
+  }
+}
+
+.p-inline-end-17 {
+  padding-inline-end: $p-2;
+  @include mindesktop {
+    padding-inline-end: $p-17;
+  }
+}
+.p-inline-end-12 {
+  padding-inline-end: $p-2;
+  @include mindesktop {
+    padding-inline-end: $p-12;
+  }
+}
+.p-inline-end-21 {
+  padding-inline-end: $p-2;
+  @include mindesktop {
+    padding-inline-end: $p-section-1;
+  }
+}
+
+.p-inline-end-11 {
+  padding-inline-end: $p-2;
+  @include mindesktop {
+    padding-inline-end: $p-11;
+  }
+}
+
+.p-inline-start-35 {
+  padding-inline-start: $p-2;
+
+  @include mindesktop {
+    padding-inline-start: $p-35;
+  }
+}
+
+.p-inline-end-35 {
+  padding-inline-end: $p-2;
+
+  @include mindesktop {
+    padding-inline-end: $p-35;
+  }
+}
+
+.p-inline-35 {
+  padding-inline-start: $p-2;
+  padding-inline-end: $p-2;
+
+  @include mindesktop {
+    padding-inline-start: $p-35;
+    padding-inline-end: $p-35;
+  }
+}
+
+.p-top-3-5 {
+  padding-top: $p-3-5;
+}
+
+.p-top-4-6 {
+  padding-top: $p-4-6;
+}
+
+.p-top-8-6 {
+  padding-top: $p-8-6;
+}
+
+.p-top-10 {
+  padding-top: $p-10;
+}
+
+.padding-4-8 {
+  padding: $p-4-6;
+}
+
+.padding-inline-4 {
+  padding-inline-start: $p-4;
+}
+
+.padding-inline-2 {
+  padding-inline-start: $p-2;
+}
+
+.padding-inline-1-5 {
+  padding-inline-start: $p-1-5;
+}
+
+.p-12-xdirection {
+  padding-inline-end: $p-2;
+  padding-inline-start: $p-2;
+
+  @include mindesktop {
+    padding-inline-end: $p-12;
+    padding-inline-start: $p-12;
+  }
+}
+
+.p-inline-14 {
+  padding-inline-end: $p-2;
+
+  @include mindesktop {
+    padding-inline-start: $p-14;
+  }
+}
+
+.p-10-ydirection {
+  padding-top: $p-2;
+  padding-bottom: $p-2;
+
+  @include mindesktop {
+    padding-top: $p-10;
+    padding-bottom: $p-10;
+  }
+}
+/**
+* this spacing with rem as zeplin spacing
+* if we need the two sides e.g. left&right we use suffix[xdirection], or top&bottom we use suufix [ydirection]
+*/
+.m-section-top {
+  margin-top: $m-section;
+}
+
+.m-section-bottom {
+  margin-bottom: $m-section;
+}
+
+.m-card-end {
+  margin-inline-end: $m-card;
+}
+
+.m-card-top {
+  margin-top: $m-card;
+}
+
+.m-card-bottom {
+  margin-bottom: $m-card;
+}
+
+.m-card-y {
+  margin-top: $m-card;
+  margin-bottom: $m-card;
+}
+
+.p-section-end {
+  padding-inline-end: $p-2;
+  @include mindesktop {
+    padding-inline-end: $p-section;
+  }
+}
+
+.p-section-start {
+  padding-inline-start: $p-2;
+  @include mindesktop {
+    padding-inline-start: $p-section;
+  }
+}
+
+.p-section-xdirection {
+  padding-inline-end: $p-2;
+  padding-inline-start: $p-2;
+  @include mindesktop {
+    padding-inline-end: $p-section;
+    padding-inline-start: $p-section;
+  }
+}
+
+.p-header-start {
+  padding-inline-start: $p-2;
+  @include mindesktop {
+    padding-inline-start: $p-header;
+  }
+}
+
+.p-header-end {
+  padding-inline-end: $p-2;
+  @include mindesktop {
+    padding-inline-end: $p-header;
+  }
+}
+
+.p-header-xdirection {
+  padding-inline-end: $p-2;
+  padding-inline-start: $p-2;
+
+  @include mindesktop {
+    padding-inline-end: $p-header;
+    padding-inline-start: $p-header;
+  }
+}
+
+.p-10-ydirection {
+  padding-top: $p-10;
+  padding-bottom: $p-10;
+}
+
+.p-top-6 {
+  padding-top: $m-6;
+}
+.m-top-6 {
+  margin-top: $m-6;
+}
+
+.m-bottom-6 {
+  margin-bottom: $m-6;
+}
+
+.m-ydirection-6 {
+  margin-top: $m-6;
+  margin-bottom: $m-6;
+}
+
+.m-top-10 {
+  margin-top: var(--space-10);
+}
+
+.m-bottom-10 {
+  margin-bottom: var(--space-10);
+}

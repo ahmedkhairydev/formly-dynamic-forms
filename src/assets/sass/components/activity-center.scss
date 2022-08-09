@@ -1,0 +1,40 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+
+.activity-center-tabs__content-filter {
+        .p-dropdown {
+            line-height: unset !important;
+            min-height: unset !important;
+            border: unset !important;
+            background: unset !important;
+
+            .p-dropdown-label {
+                font-family: $font-family-en-1  !important;
+            }
+
+            .p-dropdown-trigger {
+                width: unset !important;
+            }
+
+            .p-dropdown-panel {
+                width: 250px;
+
+            }
+        }
+
+        .p-element{
+            color: $primary;
+        }
+        .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight{
+            background-color: $dropdown-background;
+        }
+        .p-dropdown-items-wrapper {
+            @include scrollbars(5px, $white, $body-background-2, 5px);
+        }
+
+        .p-dropdown:not(.p-disabled).p-focus {
+            box-shadow: 0 0 0 0.2rem $white  !important;
+        }
+
+}

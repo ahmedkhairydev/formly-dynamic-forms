@@ -1,0 +1,56 @@
+:root {
+  /* Space - Sizes */
+  --space-xs: 0.4rem;
+  --space-s: 0.8rem;
+  --space-base: 1.2rem;
+  --space-m: 1.4rem;
+  --space-l: 2.4rem;
+  --space-xl: 3.2rem;
+  --space-xxl: 4rem;
+}
+
+/* paddings */
+.padding-xs {
+  padding: var(--space-xs);
+}
+.padding-s {
+  padding: var(--space-s);
+}
+.padding-base {
+  padding: var(--space-base);
+}
+.padding-m {
+  padding: var(--space-m);
+}
+.padding-l {
+  padding: var(--space-l);
+}
+.padding-xl {
+  padding: var(--space-xl);
+}
+.padding-xxl {
+  padding: var(--space-xxl);
+}
+
+/** margins **/
+.margin-xs {
+  margin: var(--space-xs);
+}
+.margin-s {
+  margin: var(--space-s);
+}
+.margin-base {
+  margin: var(--space-base);
+}
+.margin-m {
+  margin: var(--space-m);
+}
+.margin-l {
+  margin: var(--space-l);
+}
+.margin-xl {
+  margin: var(--space-xl);
+}
+.margin-xxl {
+  margin: var(--space-xxl);
+}

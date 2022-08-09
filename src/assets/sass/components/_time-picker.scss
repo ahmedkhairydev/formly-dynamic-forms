@@ -1,0 +1,98 @@
+// ::ng-deep {
+.ngx-timepicker {
+    &:focus {
+        border: 1px solid $primary;
+    }
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid $grey-11;
+    border-bottom: 1px solid $grey-11 !important;
+    width: 100%;
+    font-size: 1.4rem;
+    color: $grey-12;
+    .ngx-timepicker__toggle {
+        .ngx-material-timepicker-toggle {
+            display: none;
+        }
+    }
+    .ngx-timepicker__control--forth {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .period {
+            .period-control {
+                .period-control__button {
+                    color: $grey-12;
+                    @include font-size(16);
+                    @include fontFamily($font-family-primary-en);
+                    font-weight: $font-weight-medium !important;
+                    border-inline-start: 1px solid $grey-11;
+
+                    .period-control__arrow {
+                        color: transparent !important;
+                        font-size: unset;
+                        background-image: url("../../assets/media/icons/forms/angle-down.svg");
+                    }
+                    &::after {
+                        content: unset !important;
+                    }
+                }
+            }
+            .period-selector {
+                right: unset;
+                top: unset;
+                max-width: 70px;
+                border-radius: 8px;
+                margin-top: 18px;
+                overflow: hidden;
+                background-color: $white;
+                padding: 0;
+                .period-selector__button {
+                    @include font-size(16);
+                    @include fontFamily($font-family-primary-en);
+                    font-weight: $font-weight-regular !important;
+                    &:hover {
+                        background-color: $body-background;
+                    }
+                    &.period-selector__button--active {
+                        color: $grey-12 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.ngx-timepicker__control--first,
+.ngx-timepicker__control--third {
+    .ngx-timepicker-control {
+        width: 25px !important;
+        padding: 0 !important;
+        .ngx-timepicker-control__input {
+            color: $grey-12;
+            @include font-size(16);
+            @include fontFamily($font-family-primary-en);
+            font-weight: $font-weight-regular !important;
+            background-color: unset;
+            padding: 0 !important;
+        }
+        .ngx-timepicker-control__arrows {
+            top: -1px !important;
+            display: none;
+            .ngx-timepicker-control__arrow {
+                height: 14px;
+                &:hover {
+                    color: $primary !important;
+                }
+            }
+        }
+        &.ngx-timepicker-control--active {
+            &::after {
+                content: unset !important;
+            }
+        }
+    }
+}
+.ngx-timepicker__time-colon {
+    margin-left: unset !important;
+}

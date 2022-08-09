@@ -1,0 +1,8 @@
+.cdk-overlay-dark-backdrop {
+    background-color: rgba($dark-blue, 0.3);
+    @include prefix(backdrop-filter, blur(27.2px));
+}
+
+.mat-dialog-container{
+    @include scrollbars(9px, $body-background, $secondary, 5px);
+}

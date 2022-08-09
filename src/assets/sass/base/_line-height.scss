@@ -1,0 +1,81 @@
+$line-height-8: var(--line-height-8);
+$line-height-9: var(--line-height-9);
+$line-height-72: var(--line-height-72);
+$line-height-45: var(--line-height-45);
+$line-height-24: var(--line-height-24);
+$line-height-16: var(--line-height-16);
+$line-height-14-2: var(--line-height-14-2);
+$line-height-13: var(--line-height-13);
+$line-height-1-5: var(--line-height-1-5);
+$line-height-57: var(--line-height-57);
+$line-height-28-8: var(--line-height-28-8);
+
+.line-height-8 {
+  line-height: var(--line-height-8);
+}
+
+.line-height-9 {
+  line-height: var(--line-height-9);
+}
+
+.line-height-24 {
+  line-height: var(--line-height-24);
+}
+
+.line-height-16 {
+  line-height: var(--line-height-16);
+}
+
+.line-height-14-2 {
+  line-height: var(--line-height-14-2);
+}
+
+.line-height-13 {
+  line-height: var(--line-height-13);
+}
+
+.line-height-1-5 {
+  line-height: var(--line-height-1-5);
+}
+
+.line-height-1 {
+  line-height: var(--line-height-1);
+}
+
+.line-height-4 {
+  line-height: var(--line-height-4);
+}
+.line-height-32 {
+  line-height: var(--line-height-32);
+}
+
+.line-height-1-3 {
+  line-height: var(--line-height-1-3) !important;
+}
+
+.line-height-57 {
+  line-height: var(--line-height-57) !important;
+}
+
+.line-height-28-8 {
+  line-height: var(--line-height-28-8);
+}
+
+:root {
+  --line-height-8: 8rem;
+  --line-height-9: 9rem;
+  --line-height-4: 4rem;
+  --line-height-72: 72px;
+  --line-height-45: 45px;
+  --line-height-32: 32px;
+  --line-height-28-8: 28.8px;
+  --line-height-24: 24px;
+  --line-height-20: 20px;
+  --line-height-16: 16.2px;
+  --line-height-14-2: 14.2px;
+  --line-height-1-5: 1.5px;
+  --line-height-1: 1;
+  --line-height-1-3: 1.3;
+  --line-height-13: 13px;
+  --line-height-57: 57px;
+}

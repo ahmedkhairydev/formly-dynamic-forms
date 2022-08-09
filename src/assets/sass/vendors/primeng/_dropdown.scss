@@ -1,0 +1,21 @@
+.p-dropdown {
+  width: 100%;
+  min-height: 54px;
+  line-height: 54px;
+    background-color: $input-background;
+    @include border-radius(8px);
+      border: solid 1px $grey-11;
+      .p-dropdown-label, .p-dropdown-item {
+         @include font-size(16);
+      }
+      .p-dropdown-trigger {
+        width: 40px;
+      }
+      .p-dropdown-trigger-icon {
+            &::before {
+                font-weight: $font-weight-extra-bold;
+                @include font-size(16);
+                color: $primary
+              }
+            }
+}

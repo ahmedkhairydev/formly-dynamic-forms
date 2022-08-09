@@ -1,0 +1,9 @@
+<div class="page-wrapper d-flex flex-column h-100 mt-4">
+    <h1 class="m-0 font-size-26">{{ 'POC - Dynamic Forms' }}</h1>
+
+    <div class="form-wrapper row justify-content-center h-100 mt-5" *ngIf="model">
+        <form class="col-6" autocomplete="off" [formGroup]="form">
+            <app-youxel-form [form]="form" [fields]="fields" [model]="model"></app-youxel-form>
+        </form>
+    </div>
+</div>
