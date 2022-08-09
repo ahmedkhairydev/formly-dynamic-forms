@@ -28,7 +28,7 @@
             "inlineStyleLanguage": "scss",
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/sass"
+                "src/assets/sass"
               ]
             },
             "assets": [
@@ -41,7 +41,7 @@
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeicons/primeicons.css",
-              "src/sass/main.scss",
+              "src/assets/sass/main.scss",
               "src/styles.scss"
             ],
             "scripts": [
