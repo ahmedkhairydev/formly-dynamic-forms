@@ -116,12 +116,12 @@ export class ConstructSubmissionService {
         "label": "Status"
       },
       {
-        "name": "fullName",
+        "name": "SRDInstance",
         "value": [
           "Ahmed"
         ],
         "type": "TextBox",
-        "label": "Your Name"
+        "label": "SRD Instance"
       },
     ];
   }

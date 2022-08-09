@@ -1,23 +1,6 @@
-import { Observable } from 'rxjs';
+import { FormlyTemplateOptions } from '@ngx-formly/core';
 
-export interface FieldTemplateOptions {
-  type?: string;
-  label?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  options?: any[] | Observable<any[]>;
-  rows?: number;
-  cols?: number;
-  description?: string;
-  hidden?: boolean;
-  max?: number;
-  min?: number;
-  minLength?: number;
-  maxLength?: number;
-  pattern?: string | RegExp;
-  required?: boolean;
-  tabindex?: number;
-  readonly?: boolean;
+export interface FieldTemplateOptions extends FormlyTemplateOptions {
   optionLabelPropertyName?: string;
   imagePropertyName?: string;
   optionLayout?: string;

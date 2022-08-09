@@ -1,12 +1,183 @@
 import { Injectable } from '@angular/core';
 import { ControlJson } from '../interfaces/control-json.interface';
+import { ControlCascadingService } from './control-cascading/control-cascading.service';
+import { ControlExpressionService } from './control-expression/control-expression.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MappingJsonData {
+
   jsonControls: ControlJson[] = [];
-  constructor() {}
+
+  classes = [
+    {
+      "key": null,
+      "selectedKey": null,
+      "text": "Select an Option",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "ARCHITECTURAL",
+      "selectedKey": "ARCHITECTURAL",
+      "text": "ARCHITECTURAL",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Building indoor and outdoor",
+      "selectedKey": "Building indoor and outdoor",
+      "text": "Building indoor and outdoor",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "CIVIL",
+      "selectedKey": "CIVIL",
+      "text": "CIVIL",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Doors",
+      "selectedKey": "Doors",
+      "text": "Doors",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Dot Matrix",
+      "selectedKey": "Dot Matrix",
+      "text": "Dot Matrix",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "ELECTRICAL",
+      "selectedKey": "ELECTRICAL",
+      "text": "ELECTRICAL",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Fire Fighting & Suppression System",
+      "selectedKey": "Fire Fighting & Suppression System",
+      "text": "Fire Fighting & Suppression System",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "First Aid Kit",
+      "selectedKey": "First Aid Kit",
+      "text": "First Aid Kit",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Flooring",
+      "selectedKey": "Flooring",
+      "text": "Flooring",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Furniture",
+      "selectedKey": "Furniture",
+      "text": "Furniture",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "LOW CURRENT",
+      "selectedKey": "LOW CURRENT",
+      "text": "LOW CURRENT",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Leaflet Holder",
+      "selectedKey": "Leaflet Holder",
+      "text": "Leaflet Holder",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Lighting Maintenance",
+      "selectedKey": "Lighting Maintenance",
+      "text": "Lighting Maintenance",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "MECHANICAL",
+      "selectedKey": "MECHANICAL",
+      "text": "MECHANICAL",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "PLUMBING",
+      "selectedKey": "PLUMBING",
+      "text": "PLUMBING",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Painting",
+      "selectedKey": "Painting",
+      "text": "Painting",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "TV and Screen Issue",
+      "selectedKey": "TV and Screen Issue",
+      "text": "TV and Screen Issue",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "signage",
+      "selectedKey": "signage",
+      "text": "signage",
+      "icon": null,
+      "extra": null
+    }
+  ];
+
+  departments = [
+    {
+      "key": null,
+      "selectedKey": null,
+      "text": "Select an Option",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Consumer Customer Care Center (SMC)",
+      "selectedKey": null,
+      "text": "Consumer Customer Care Center (SMC)",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Business Customer Care Center (BCSMC)",
+      "selectedKey": null,
+      "text": "Business Customer Care Center (BCSMC)",
+      "icon": null,
+      "extra": null
+    },
+    {
+      "key": "Other Department",
+      "selectedKey": null,
+      "text": "Other Department",
+      "icon": null,
+      "extra": null
+    }
+  ];
+
+  constructor(private controlExpressionService: ControlExpressionService, private controlCascadingService: ControlCascadingService) { }
 
   getJsonData() {
     this.jsonControls = [
@@ -779,154 +950,157 @@ export class MappingJsonData {
       },
     ];
   }
+
   mappingData() {
     return [
-      // {
-      //   key: 'classId',
-      //   type: 'dropdown',
-      //   templateOptions: {
-      //     options: [],
-      //     optionLabelPropertyName: 'text',
-      //     imagePropertyName: 'image',
-      //     optionLayout: 'label',
-      //     selectedOptionLayout: 'label',
-      //     bindValue: 'key',
-      //     defaultValue: '',
-      //     index: 1,
-      //     name: 'classId',
-      //     cascadingParentIndexes: null,
-      //     cascadingChildrenIndexes: [2],
-      //   },
-      //   hooks: {
-      //     onInit: (parentField: any) => {
-      //       // this.onInitHook(parentField);
-      //     },
-      //   },
-      // },
-      // {
-      //   key: 'workTypeId',
-      //   type: 'dropdown',
-      //   templateOptions: {
-      //     options: [],
-      //     optionLabelPropertyName: 'text',
-      //     imagePropertyName: 'image',
-      //     optionLayout: 'label',
-      //     selectedOptionLayout: 'label',
-      //     bindValue: 'key',
-      //     defaultValue: '',
-      //     index: 2,
-      //     name: 'workTypeId',
-      //     cascadingParentIndexes: [1],
-      //     cascadingChildrenIndexes: null,
-      //     dataSourceUrl:
-      //       'Value/GetDynamicByListCode/FacilityServicesWorkType?parameters={0}',
-      //   },
-      //   hideExpression: (model: any, formState: any, field: any) =>
-      //     !field?.templateOptions?.options?.length,
-      //   // expressionProperties: {
-      //   //   'templateOptions.disabled': (model, formState, field: any) => this.dynamicFormsService.disabledExpression(field),
-      //   // }
-      // },
-      // {
-      //   key: 'department',
-      //   type: 'dropdown',
-      //   templateOptions: {
-      //     options: [],
-      //     optionLabelPropertyName: 'text',
-      //     imagePropertyName: 'image',
-      //     optionLayout: 'label',
-      //     selectedOptionLayout: 'label',
-      //     bindValue: 'key',
-      //     defaultValue: '',
-      //     index: 3,
-      //     name: 'department',
-      //     cascadingParentIndexes: null,
-      //     cascadingChildrenIndexes: [4, 5, 6, 7],
-      //   },
-      //   hooks: {
-      //     onInit: (parentField: any) => {
-      //       // this.onInitHook(parentField);
-      //     },
-      //   },
-      // },
-      // {
-      //   key: 'region',
-      //   type: 'dropdown',
-      //   templateOptions: {
-      //     options: [],
-      //     optionLabelPropertyName: 'text',
-      //     imagePropertyName: 'image',
-      //     optionLayout: 'label',
-      //     selectedOptionLayout: 'label',
-      //     bindValue: 'key',
-      //     defaultValue: '',
-      //     index: 4,
-      //     name: 'region',
-      //     cascadingParentIndexes: [3],
-      //     cascadingChildrenIndexes: [5, 6, 7],
-      //     dataSourceUrl: 'Value/GetDynamicByListCode/Region?parameters={0}',
-      //   },
-      //   // hideExpression: (model, formState, field: any) => this.dynamicFormsService.cascading(field),
-      // },
-      // {
-      //   key: 'city',
-      //   type: 'dropdown',
-      //   templateOptions: {
-      //     options: [],
-      //     optionLabelPropertyName: 'text',
-      //     imagePropertyName: 'image',
-      //     optionLayout: 'label',
-      //     selectedOptionLayout: 'label',
-      //     bindValue: 'key',
-      //     defaultValue: '',
-      //     index: 5,
-      //     name: 'city',
-      //     cascadingParentIndexes: [3, 4],
-      //     cascadingChildrenIndexes: [6, 7],
-      //     dataSourceUrl: 'Value/GetDynamicByListCode/City?parameters={0},{1}',
-      //   },
-      //   // hideExpression: (model, formState, field: any) => this.dynamicFormsService.cascading(field),
-      // },
-      // {
-      //   key: 'building',
-      //   type: 'dropdown',
-      //   templateOptions: {
-      //     options: [],
-      //     optionLabelPropertyName: 'text',
-      //     imagePropertyName: 'image',
-      //     optionLayout: 'label',
-      //     selectedOptionLayout: 'label',
-      //     bindValue: 'key',
-      //     defaultValue: '',
-      //     index: 6,
-      //     name: 'building',
-      //     cascadingParentIndexes: [3, 4, 5],
-      //     cascadingChildrenIndexes: [7],
-      //     dataSourceUrl:
-      //       'Value/GetDynamicByListCode/Building?parameters={0},{1},{2}',
-      //   },
-      //   // hideExpression: (model, formState, field: any) => this.dynamicFormsService.cascading(field),
-      // },
-      // {
-      //   key: 'floor',
-      //   type: 'dropdown',
-      //   templateOptions: {
-      //     options: [],
-      //     optionLabelPropertyName: 'text',
-      //     imagePropertyName: 'image',
-      //     optionLayout: 'label',
-      //     selectedOptionLayout: 'label',
-      //     bindValue: 'key',
-      //     defaultValue: '',
-      //     index: 7,
-      //     name: 'floor',
-      //     cascadingParentIndexes: [3, 4, 5, 6],
-      //     cascadingChildrenIndexes: null,
-      //     dataSourceUrl:
-      //       'Value/GetDynamicByListCode/MobilyFloors?parameters={0},{1},{2},{3}',
-      //   },
-      //   // hideExpression: (model, formState, field: any) => this.dynamicFormsService.cascading(field),
-      // },
+      {
+        key: 'classId',
+        type: 'dropdown',
+        templateOptions: {
+          options: this.classes,
+          optionLabelPropertyName: 'text',
+          imagePropertyName: 'image',
+          optionLayout: 'label',
+          selectedOptionLayout: 'label',
+          bindValue: 'key',
+          defaultValue: '',
+          index: 1,
+          name: 'classId',
+          cascadingParentIndexes: null,
+          cascadingChildrenIndexes: [2],
+        },
+        hooks: {
+          onInit: (parentField: any) => {
+            this.controlCascadingService.onInitHook(parentField);
+          },
+        },
+      },
+      {
+        key: 'workTypeId',
+        type: 'dropdown',
+        templateOptions: {
+          options: [],
+          optionLabelPropertyName: 'text',
+          imagePropertyName: 'image',
+          optionLayout: 'label',
+          selectedOptionLayout: 'label',
+          bindValue: 'key',
+          defaultValue: '',
+          index: 2,
+          name: 'workTypeId',
+          cascadingParentIndexes: [1],
+          cascadingChildrenIndexes: null,
+          dataSourceUrl:
+            'Value/GetDynamicByListCode/FacilityServicesWorkType?parameters={0}',
+        },
+        hideExpression: (model: any, formState: any, field: any) =>
+          !field?.templateOptions?.options?.length,
+        expressionProperties: {
+          'templateOptions.disabled': (model: any, formState: any, field: any) => this.controlExpressionService.disabledExpression(field),
+        }
+      },
+
+      {
+        key: 'department',
+        type: 'dropdown',
+        templateOptions: {
+          options: this.departments,
+          optionLabelPropertyName: 'text',
+          imagePropertyName: 'image',
+          optionLayout: 'label',
+          selectedOptionLayout: 'label',
+          bindValue: 'key',
+          defaultValue: '',
+          index: 3,
+          name: 'department',
+          cascadingParentIndexes: null,
+          cascadingChildrenIndexes: [4, 5, 6, 7],
+        },
+        hooks: {
+          onInit: (parentField: any) => {
+            this.controlCascadingService.onInitHook(parentField);
+          },
+        },
+      },
+      {
+        key: 'region',
+        type: 'dropdown',
+        templateOptions: {
+          options: [],
+          optionLabelPropertyName: 'text',
+          imagePropertyName: 'image',
+          optionLayout: 'label',
+          selectedOptionLayout: 'label',
+          bindValue: 'key',
+          defaultValue: '',
+          index: 4,
+          name: 'region',
+          cascadingParentIndexes: [3],
+          cascadingChildrenIndexes: [5, 6, 7],
+          dataSourceUrl: 'Value/GetDynamicByListCode/Region?parameters={0}',
+        },
+        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.cascading(field),
+      },
+      {
+        key: 'city',
+        type: 'dropdown',
+        templateOptions: {
+          options: [],
+          optionLabelPropertyName: 'text',
+          imagePropertyName: 'image',
+          optionLayout: 'label',
+          selectedOptionLayout: 'label',
+          bindValue: 'key',
+          defaultValue: '',
+          index: 5,
+          name: 'city',
+          cascadingParentIndexes: [3, 4],
+          cascadingChildrenIndexes: [6, 7],
+          dataSourceUrl: 'Value/GetDynamicByListCode/City?parameters={0},{1}',
+        },
+        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.cascading(field),
+      },
+      {
+        key: 'building',
+        type: 'dropdown',
+        templateOptions: {
+          options: [],
+          optionLabelPropertyName: 'text',
+          imagePropertyName: 'image',
+          optionLayout: 'label',
+          selectedOptionLayout: 'label',
+          bindValue: 'key',
+          defaultValue: '',
+          index: 6,
+          name: 'building',
+          cascadingParentIndexes: [3, 4, 5],
+          cascadingChildrenIndexes: [7],
+          dataSourceUrl:
+            'Value/GetDynamicByListCode/Building?parameters={0},{1},{2}',
+        },
+        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.cascading(field),
+      },
+      {
+        key: 'floor',
+        type: 'dropdown',
+        templateOptions: {
+          options: [],
+          optionLabelPropertyName: 'text',
+          imagePropertyName: 'image',
+          optionLayout: 'label',
+          selectedOptionLayout: 'label',
+          bindValue: 'key',
+          defaultValue: '',
+          index: 7,
+          name: 'floor',
+          cascadingParentIndexes: [3, 4, 5, 6],
+          cascadingChildrenIndexes: null,
+          dataSourceUrl:
+            'Value/GetDynamicByListCode/MobilyFloors?parameters={0},{1},{2},{3}',
+        },
+        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.cascading(field),
+      },
+
       {
         key: 'isActive',
         type: 'radioState',
@@ -959,11 +1133,24 @@ export class MappingJsonData {
             },
           },
           index: 9,
+          conditionalView: {
+            validConditions: 0,
+            minimumAcceptableConditionsNumber: 1,
+            conditions: [
+              {
+                parentFieldId: "",
+                parentFieldIndex: 8,
+                validationName: "value",
+                value: "",
+                validityStatus: false
+              }
+            ]
+          }
         },
-        // hideExpression: (model, formState, field) => this.dynamicFormsService.hideExpression(field),
-        // expressionProperties: {
-        //   'templateOptions.disabled': (model, formState, field) => this.dynamicFormsService.disabledExpression(field),
-        // },
+        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.hideExpression(field),
+        expressionProperties: {
+          'templateOptions.disabled': (model: any, formState: any, field: any) => this.controlExpressionService.disabledExpression(field),
+        }
       },
     ];
   }

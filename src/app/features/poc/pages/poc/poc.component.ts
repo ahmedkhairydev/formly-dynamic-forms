@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ConstructSubmissionService } from 'src/app/shared/services/construct-submission/construct-submission.service';
-import { FormField } from 'src/app/shared/interfaces/form-field.interface';
+import { FormField } from 'src/app/shared/interfaces';
 import { MappingJsonData } from 'src/app/shared/services/mapping-data.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class PocComponent implements OnInit {
 
   model: any;
 
-  form!: FormGroup;
+  form = new FormGroup({});
 
   fields: FormField[] = [];
 
@@ -21,6 +21,7 @@ export class PocComponent implements OnInit {
 
   ngOnInit(): void {
     this.fields = this.mappingJsonData.mappingData();
+
     this.model = {
       classId: null,
       workTypeId: null,
