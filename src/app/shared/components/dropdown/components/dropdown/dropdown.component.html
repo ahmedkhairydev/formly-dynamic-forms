@@ -1,0 +1,48 @@
+<div [style.width.px]="to.width">
+    <h3 class="m-0 dropdown-label" *ngIf="to.label">{{ to.label | translate }}</h3>
+
+    <div class="dropdown">
+        <p-dropdown [options]="to.options" [ngModel]="to.defaultValue" (ngModelChange)="onSelectItem($event)" [optionValue]="to.bindValue || ''"
+                    [disabled]="to.disabled" [formlyAttributes]="field">
+            <ng-template let-selectedOption pTemplate="selectedItem">
+                <div class="option option-value" *ngIf="selectedOption">
+                    <img [src]="selectedOption[to.imagePropertyName]" [ngClass]="{'margin': to.selectedOptionLayout !== OptionsLayout.image}"
+                         *ngIf="selectedOption[to.imagePropertyName] && (to.selectedOptionLayout === OptionsLayout.image || to.selectedOptionLayout === OptionsLayout.both)" />
+
+                    <span
+                          *ngIf="to.selectedOptionLayout === OptionsLayout.label || to.selectedOptionLayout === OptionsLayout.both">{{ selectedOption[to.optionLabelPropertyName] }}</span>
+                </div>
+            </ng-template>
+
+            <ng-template let-option pTemplate="item">
+                <div class="option">
+                    <img [src]="option[to.imagePropertyName]" class="margin" *ngIf="option[to.imagePropertyName] && to.optionLayout === OptionsLayout.both" />
+                    <span *ngIf="to.optionLayout === OptionsLayout.label || to.optionLayout === OptionsLayout.both">{{ option[to.optionLabelPropertyName] }}</span>
+                </div>
+            </ng-template>
+        </p-dropdown>
+    </div>
+</div>
+
+<!-- 
+   How to use?
+   
+   JSON Ex:->
+   {
+        className: '{yourClassName}',
+        wrappers: ['form-field'],
+        key: '{yourControlName}',
+        type: 'dropdown',
+        templateOptions: {
+            options: {yourDropdownOptions}, // list of the dropdown
+            optionLabelPropertyName: 'name', // option label the naming key to bind from the backend
+            imagePropertyName: 'image', // Image Property Name is the naming key to bind image property from the backend
+            optionLayout: 'both', // 'label' | 'both' -> Option Layout is the naming key to display the label or label & image together in options list
+            selectedOptionLayout: 'image', // 'label' | 'both' | 'image' -> selected Option Layout is the naming key to display image or label or both together in the selected UI
+            bindValue: '{optionPropertyName}', // the property of the option to bind with. it's optional.
+            defaultValue: this.form.get('{yourControlName}')?.value, // default value. it's optional.
+            width: '', // width of the dropdown. it's optional.
+            label: '' // dropdown label translate key. it's optional.
+        }
+    }
+-->

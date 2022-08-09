@@ -2,7 +2,7 @@
     <h1 class="m-0 font-size-26">{{ 'POC - Dynamic Forms' }}</h1>
 
     <div class="form-wrapper row justify-content-center h-100 mt-5" *ngIf="model">
-        <form class="col-6" autocomplete="off" [formGroup]="form">
+        <form class="col-6" autocomplete="off" [formGroup]="form" (ngSubmit)="submit()">
             <app-youxel-form [form]="form" [fields]="fields" [model]="model"></app-youxel-form>
         </form>
     </div>
