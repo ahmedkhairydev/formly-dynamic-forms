@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ConstructSubmissionService } from 'src/app/shared/services/construct-submission/construct-submission.service';
 import { FormField } from 'src/app/shared/interfaces';
-import { MappingJsonData } from 'src/app/shared/services/mapping-data.service';
+import { ConstructFormlyFieldsService } from 'src/app/shared/services/construct-formly-fields/construct-formly-fields.service';
 
 @Component({
   selector: 'app-poc',
@@ -17,10 +17,10 @@ export class PocComponent implements OnInit {
 
   fields: FormField[] = [];
 
-  constructor(private mappingJsonData: MappingJsonData, private constructSubmissionService: ConstructSubmissionService) { }
+  constructor(private constructFormlyFieldsService: ConstructFormlyFieldsService, private constructSubmissionService: ConstructSubmissionService) { }
 
   ngOnInit(): void {
-    this.fields = this.mappingJsonData.mappingData();
+    this.fields = this.constructFormlyFieldsService.mappingData();
 
     this.model = {
       classId: null,

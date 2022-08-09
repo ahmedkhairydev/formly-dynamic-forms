@@ -9,16 +9,6 @@ export class ControlExpressionService {
 
   // constructor(public httpService: HttpService) { }
   constructor() { }
-  
-  cascading(field: any) {
-    const fields = (field.parent.fieldGroup as FormlyFieldConfig[]),
-      templateOptions = field.templateOptions,
-      parentIndex = templateOptions.cascadingParentIndexes[templateOptions.cascadingParentIndexes.length - 1],
-      parent = fields.find(field => field.templateOptions?.['index'] === parentIndex) as FormlyFieldConfig,
-      fieldControl = field.form.get(field.templateOptions?.['name']);
-
-    return !parent.form?.get(parent.templateOptions?.['name'])?.value || (!field.templateOptions.options?.length && !fieldControl?.value);
-  }
 
   hideExpression(field: any) {
     const fields = (field.parent.fieldGroup as FormlyFieldConfig[]),

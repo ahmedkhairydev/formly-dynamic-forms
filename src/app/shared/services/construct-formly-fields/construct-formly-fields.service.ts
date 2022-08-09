@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ControlJson } from '../interfaces/control-json.interface';
-import { ControlCascadingService } from './control-cascading/control-cascading.service';
-import { ControlExpressionService } from './control-expression/control-expression.service';
+import { ControlJson } from '../../interfaces';
+import { ControlCascadingService } from '../control-cascading/control-cascading.service';
+import { ControlExpressionService } from '../control-expression/control-expression.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class MappingJsonData {
+export class ConstructFormlyFieldsService {
 
   jsonControls: ControlJson[] = [];
 
@@ -1039,7 +1039,7 @@ export class MappingJsonData {
           cascadingChildrenIndexes: [5, 6, 7],
           dataSourceUrl: 'Value/GetDynamicByListCode/Region?parameters={0}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
       },
       {
         key: 'city',
@@ -1058,7 +1058,7 @@ export class MappingJsonData {
           cascadingChildrenIndexes: [6, 7],
           dataSourceUrl: 'Value/GetDynamicByListCode/City?parameters={0},{1}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
       },
       {
         key: 'building',
@@ -1078,7 +1078,7 @@ export class MappingJsonData {
           dataSourceUrl:
             'Value/GetDynamicByListCode/Building?parameters={0},{1},{2}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
       },
       {
         key: 'floor',
@@ -1098,7 +1098,7 @@ export class MappingJsonData {
           dataSourceUrl:
             'Value/GetDynamicByListCode/MobilyFloors?parameters={0},{1},{2},{3}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
       },
 
       {
