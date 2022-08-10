@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ConstructSubmissionService } from 'src/app/shared/services/construct-submission/construct-submission.service';
-import { FormField } from 'src/app/shared/interfaces';
+import { FormlyControl } from 'src/app/shared/interfaces';
 import { ConstructFormlyFieldsService } from 'src/app/shared/services/construct-formly-fields/construct-formly-fields.service';
 
 @Component({
@@ -15,12 +15,14 @@ export class PocComponent implements OnInit {
 
   form = new FormGroup({});
 
-  fields: FormField[] = [];
+  fields: FormlyControl[] = [];
 
   constructor(private constructFormlyFieldsService: ConstructFormlyFieldsService, private constructSubmissionService: ConstructSubmissionService) { }
 
   ngOnInit(): void {
-    this.fields = this.constructFormlyFieldsService.mappingData();
+    console.log(this.constructFormlyFieldsService.constructFormlyFields(this.constructFormlyFieldsService.jsonControls))
+
+    this.fields = this.constructFormlyFieldsService.constructFormlyFields(this.constructFormlyFieldsService.jsonControls);
 
     this.model = {
       classId: null,

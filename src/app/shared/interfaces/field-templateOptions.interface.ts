@@ -1,18 +1,21 @@
 import { FormlyTemplateOptions } from '@ngx-formly/core';
 
 export interface FieldTemplateOptions extends FormlyTemplateOptions {
-  optionLabelPropertyName?: string;
-  imagePropertyName?: string;
-  optionLayout?: string;
-  selectedOptionLayout?: string;
-  bindValue?: string;
-  defaultValue?: string;
+  optionLabelPropertyName?: string | null;
+  imagePropertyName?: string | null;
+  optionLayout?: string | null;
+  selectedOptionLayout?: string | null;
+  bindValue?: string | null;
+  defaultValue?: string | null;
   index?: number;
   name?: string;
-  cascadingParentIndexes?: any;
-  cascadingChildrenIndexes?: any;
-  dataSourceUrl?: string;
-  outerIcon?: string;
-  fieldInlineStyle?: {};
-  conditionalView?: {};
+  outerIcon?: string | null;
+  fieldInlineStyle?: {} | null;
+  conditionalView?: {} | null;
+
+  dataSourceId?: string | null;
+  dataSourceType?: string | null;
+  dataSourceUrl?: string | null;
+  cascadingChildrenIndexes?: number[] | null;
+  cascadingParentIndexes?: number[] | null;
 }

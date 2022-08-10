@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BackendResponse } from '../../interfaces';
+import { FormlyTemplateOptions } from '@ngx-formly/core';
+import { FormControlTypes } from '../../enums';
+import { BackendControl, FormlyControl } from '../../interfaces';
 import { ControlCascadingService } from '../control-cascading/control-cascading.service';
 import { ControlExpressionService } from '../control-expression/control-expression.service';
 
@@ -7,8 +9,6 @@ import { ControlExpressionService } from '../control-expression/control-expressi
   providedIn: 'root'
 })
 export class ConstructFormlyFieldsService {
-
-  jsonControls: BackendResponse[] = [];
 
   classes = [
     {
@@ -177,10 +177,8 @@ export class ConstructFormlyFieldsService {
     }
   ];
 
-  constructor(private controlExpressionService: ControlExpressionService, private controlCascadingService: ControlCascadingService) { }
-
-  getJsonData() {
-    this.jsonControls = [
+  get jsonControls(): BackendControl[] {
+    return [
       {
         options: [
           {
@@ -199,7 +197,7 @@ export class ConstructFormlyFieldsService {
         isExternalDataSource: false,
         value: [],
         id: 'Drop-1',
-        type: 'DropDown',
+        type: 'dropdown',
         format: '',
         contentType: null,
         index: 2,
@@ -266,7 +264,7 @@ export class ConstructFormlyFieldsService {
           },
         ],
         id: 'text-1',
-        type: 'DropDown',
+        type: 'dropdown',
         format: '',
         contentType: null,
         index: 3,
@@ -448,7 +446,7 @@ export class ConstructFormlyFieldsService {
         isExternalDataSource: true,
         value: [],
         id: 'Drop-2',
-        type: 'DropDown',
+        type: 'dropdown',
         format: '',
         contentType: null,
         index: 4,
@@ -510,7 +508,7 @@ export class ConstructFormlyFieldsService {
         isExternalDataSource: true,
         value: [],
         id: 'Drop-3',
-        type: 'DropDown',
+        type: 'dropdown',
         format: '',
         contentType: null,
         index: 5,
@@ -595,7 +593,7 @@ export class ConstructFormlyFieldsService {
         isExternalDataSource: false,
         value: [],
         id: 'Drop-4',
-        type: 'DropDown',
+        type: 'dropdown',
         format: '',
         contentType: null,
         index: 6,
@@ -657,7 +655,7 @@ export class ConstructFormlyFieldsService {
         isExternalDataSource: true,
         value: [],
         id: 'Drop-5',
-        type: 'DropDown',
+        type: 'dropdown',
         format: '',
         contentType: null,
         index: 7,
@@ -719,7 +717,7 @@ export class ConstructFormlyFieldsService {
         isExternalDataSource: true,
         value: [],
         id: 'Drop-6',
-        type: 'DropDown',
+        type: 'dropdown',
         format: '',
         contentType: null,
         index: 8,
@@ -781,7 +779,7 @@ export class ConstructFormlyFieldsService {
         isExternalDataSource: true,
         value: [],
         id: 'Drop-7',
-        type: 'DropDown',
+        type: 'dropdown',
         format: '',
         contentType: null,
         index: 9,
@@ -854,7 +852,7 @@ export class ConstructFormlyFieldsService {
         type: 'radioState',
         format: '',
         contentType: null,
-        index: 1,
+        index: 15,
         formCode: null,
         valuePathEn: null,
         valuePathAr: null,
@@ -903,7 +901,7 @@ export class ConstructFormlyFieldsService {
       {
         value: ['SRGAA5V0F751SARAKDWCQZLDXFIQC6'],
         id: 'text-6',
-        type: 'TextBox',
+        type: 'text',
         format: '',
         contentType: null,
         index: 16,
@@ -922,7 +920,7 @@ export class ConstructFormlyFieldsService {
         translations: null,
         label: 'SRD Instance',
         description: null,
-        placeHolder: '',
+        placeHolder: 'Enter your name.',
         isVisible: false,
         roles: [],
         icon: '',
@@ -936,20 +934,322 @@ export class ConstructFormlyFieldsService {
           font: '',
           fontSize: '',
         },
-        validations: [],
+        validations: [
+          {
+            name: "required",
+            value: "",
+            message: "This field is required",
+            translations: null
+          },
+          {
+            name: "min",
+            value: "1",
+            message: "The minimum length is 1 character",
+            translations: null
+          },
+          {
+            name: "maxlength",
+            value: "4000",
+            message: "The maximum length  is 4000 characters",
+            translations: null
+          }
+        ],
         dependencies: [],
         conditionalView: {
           validConditions: 0,
-          minimumAcceptableConditionsNumber: null,
-          conditions: null,
+          minimumAcceptableConditionsNumber: 1,
+          conditions: [
+            {
+              parentFieldId: "",
+              parentFieldIndex: 15,
+              validationName: "value",
+              value: "",
+              validityStatus: false
+            }
+          ]
         },
         relationEquation: null,
         isSubmitted: true,
         savedValues: null,
         tableOperation: null,
       },
+      // {
+      //   "subControls": null,
+      //   "controls": [
+      //     {
+      //       "value": [],
+      //       "id": "text-1",
+      //       "type": "text",
+      //       "format": "",
+      //       "contentType": null,
+      //       "index": 1,
+      //       "formCode": null,
+      //       "valuePathEn": "",
+      //       "valuePathAr": "",
+      //       "readOnly": false,
+      //       "isVisibleInViewMode": false,
+      //       "isRequired": true,
+      //       "isValueDynamic": true,
+      //       "dataSourceType": "",
+      //       "dataSourceUrl": null,
+      //       "dataSourceId": "",
+      //       "mappedValue": null,
+      //       "name": "Description",
+      //       "translations": null,
+      //       "label": "Description",
+      //       "description": null,
+      //       "placeHolder": "Description",
+      //       "isVisible": true,
+      //       "roles": [],
+      //       "icon": "",
+      //       "style": {
+      //         "border": "",
+      //         "borderType": "",
+      //         "borderColor": "",
+      //         "backgroundColor": "",
+      //         "textColor": "",
+      //         "textAlign": "",
+      //         "font": "",
+      //         "fontSize": ""
+      //       },
+      //       "validations": [
+      //         {
+      //           "name": "required",
+      //           "value": "",
+      //           "message": "Description is required",
+      //           "translations": null
+      //         },
+      //         {
+      //           "name": "minlength",
+      //           "value": "1",
+      //           "message": "The minimum length is 5 characters",
+      //           "translations": null
+      //         },
+      //         {
+      //           "name": "maxlength",
+      //           "value": "240",
+      //           "message": "The maximum length is 240 characters",
+      //           "translations": null
+      //         }
+      //       ],
+      //       "dependencies": [],
+      //       "conditionalView": {
+      //         "validConditions": 0,
+      //         "minimumAcceptableConditionsNumber": null,
+      //         "conditions": null
+      //       },
+      //       "relationEquation": null,
+      //       "isSubmitted": true,
+      //       "savedValues": null,
+      //       "tableOperation": null
+      //     },
+      //     {
+      //       "value": [],
+      //       "id": "text-2",
+      //       "type": "text",
+      //       "format": "",
+      //       "contentType": null,
+      //       "index": 2,
+      //       "formCode": null,
+      //       "valuePathEn": "",
+      //       "valuePathAr": "",
+      //       "readOnly": false,
+      //       "isVisibleInViewMode": false,
+      //       "isRequired": true,
+      //       "isValueDynamic": true,
+      //       "dataSourceType": "",
+      //       "dataSourceUrl": null,
+      //       "dataSourceId": "",
+      //       "mappedValue": null,
+      //       "name": "SerialNumber",
+      //       "translations": null,
+      //       "label": "Serial Number",
+      //       "description": null,
+      //       "placeHolder": "Serial Number",
+      //       "isVisible": true,
+      //       "roles": [],
+      //       "icon": "",
+      //       "style": {
+      //         "border": "",
+      //         "borderType": "",
+      //         "borderColor": "",
+      //         "backgroundColor": "",
+      //         "textColor": "",
+      //         "textAlign": "",
+      //         "font": "",
+      //         "fontSize": ""
+      //       },
+      //       "validations": [
+      //         {
+      //           "name": "required",
+      //           "value": "",
+      //           "message": "Serial Number is required",
+      //           "translations": null
+      //         },
+      //         {
+      //           "name": "minlength",
+      //           "value": "1",
+      //           "message": "The minimum length is 5 characters",
+      //           "translations": null
+      //         },
+      //         {
+      //           "name": "maxlength",
+      //           "value": "240",
+      //           "message": "The maximum length is 240 characters",
+      //           "translations": null
+      //         }
+      //       ],
+      //       "dependencies": [],
+      //       "conditionalView": {
+      //         "validConditions": 0,
+      //         "minimumAcceptableConditionsNumber": null,
+      //         "conditions": null
+      //       },
+      //       "relationEquation": null,
+      //       "isSubmitted": true,
+      //       "savedValues": null,
+      //       "tableOperation": null
+      //     },
+      //     {
+      //       "value": [],
+      //       "id": "text-3",
+      //       "type": "text",
+      //       "format": "",
+      //       "contentType": "number",
+      //       "index": 3,
+      //       "formCode": null,
+      //       "valuePathEn": "",
+      //       "valuePathAr": "",
+      //       "readOnly": false,
+      //       "isVisibleInViewMode": false,
+      //       "isRequired": true,
+      //       "isValueDynamic": true,
+      //       "dataSourceType": "",
+      //       "dataSourceUrl": null,
+      //       "dataSourceId": "",
+      //       "mappedValue": null,
+      //       "name": "Quantity",
+      //       "translations": null,
+      //       "label": "Quantity",
+      //       "description": null,
+      //       "placeHolder": "Quantity",
+      //       "isVisible": true,
+      //       "roles": [],
+      //       "icon": "",
+      //       "style": {
+      //         "border": "",
+      //         "borderType": "",
+      //         "borderColor": "",
+      //         "backgroundColor": "",
+      //         "textColor": "",
+      //         "textAlign": "",
+      //         "font": "",
+      //         "fontSize": ""
+      //       },
+      //       "validations": [
+      //         {
+      //           "name": "required",
+      //           "value": "",
+      //           "message": "Quantity is required",
+      //           "translations": null
+      //         },
+      //         {
+      //           "name": "minlength",
+      //           "value": "1",
+      //           "message": "The minimum length is 5 characters",
+      //           "translations": null
+      //         },
+      //         {
+      //           "name": "maxlength",
+      //           "value": "240",
+      //           "message": "The maximum length is 240 characters",
+      //           "translations": null
+      //         }
+      //       ],
+      //       "dependencies": [],
+      //       "conditionalView": {
+      //         "validConditions": 0,
+      //         "minimumAcceptableConditionsNumber": null,
+      //         "conditions": null
+      //       },
+      //       "relationEquation": null,
+      //       "isSubmitted": true,
+      //       "savedValues": null,
+      //       "tableOperation": null
+      //     }
+      //   ],
+      //   "nestedControlValues": null,
+      //   "columnOperationIds": null,
+      //   "value": [],
+      //   "id": "table-1",
+      //   "type": "table",
+      //   "format": "",
+      //   "contentType": null,
+      //   "index": 16,
+      //   "formCode": null,
+      //   "valuePathEn": null,
+      //   "valuePathAr": null,
+      //   "readOnly": false,
+      //   "isVisibleInViewMode": false,
+      //   "isRequired": true,
+      //   "isValueDynamic": false,
+      //   "dataSourceType": "",
+      //   "dataSourceUrl": null,
+      //   "dataSourceId": "",
+      //   "mappedValue": null,
+      //   "name": "MaterialGatePass_MaterialInformation",
+      //   "translations": null,
+      //   "label": "Fill List Of Material Information",
+      //   "description": null,
+      //   "placeHolder": null,
+      //   "isVisible": true,
+      //   "roles": [],
+      //   "icon": "",
+      //   "style": {
+      //     "border": "",
+      //     "borderType": "",
+      //     "borderColor": "",
+      //     "backgroundColor": "",
+      //     "textColor": "",
+      //     "textAlign": "",
+      //     "font": "",
+      //     "fontSize": ""
+      //   },
+      //   "validations": [
+      //     {
+      //       "name": "required",
+      //       "value": "",
+      //       "message": "Employee Name is required",
+      //       "translations": null
+      //     },
+      //     {
+      //       "name": "minRows",
+      //       "value": "1",
+      //       "message": "The minimum number of rows  is 1 row",
+      //       "translations": null
+      //     },
+      //     {
+      //       "name": "maxRows",
+      //       "value": "20",
+      //       "message": "The maximum number of rows  is 20 row",
+      //       "translations": null
+      //     }
+      //   ],
+      //   "dependencies": [],
+      //   "conditionalView": {
+      //     "validConditions": 0,
+      //     "minimumAcceptableConditionsNumber": null,
+      //     "conditions": null
+      //   },
+      //   "relationEquation": null,
+      //   "isSubmitted": true,
+      //   "savedValues": null,
+      //   "tableOperation": null
+      // }
     ];
   }
+
+  constructor(private controlExpressionService: ControlExpressionService, private controlCascadingService: ControlCascadingService) { }
 
   mappingData() {
     return [
@@ -990,11 +1290,9 @@ export class ConstructFormlyFieldsService {
           name: 'workTypeId',
           cascadingParentIndexes: [1],
           cascadingChildrenIndexes: null,
-          dataSourceUrl:
-            'Value/GetDynamicByListCode/FacilityServicesWorkType?parameters={0}',
+          dataSourceUrl: 'Value/GetDynamicByListCode/FacilityServicesWorkType?parameters={0}',
         },
-        hideExpression: (model: any, formState: any, field: any) =>
-          !field?.templateOptions?.options?.length,
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
         expressionProperties: {
           'templateOptions.disabled': (model: any, formState: any, field: any) => this.controlExpressionService.disabledExpression(field),
         }
@@ -1155,5 +1453,165 @@ export class ConstructFormlyFieldsService {
     ];
   }
 
-  // constructFormlyFields()
+  constructFormlyFields(controls: BackendControl[]) {
+    let generatedControls: FormlyControl[] = [];
+
+    controls.forEach(control => {
+      let generatedControl: FormlyControl = {
+        ...this.handleDefualtProperties(control),
+        ...this.handleHideExpression(control),
+
+        templateOptions: {
+          ...this.handleDefualtTemplateOptionsProperties(control),
+          ...this.handleStyleProperties(control),
+          ...this.handleConditionalViewProperties(control),
+          ...this.handleCascadingProperties(control),
+          ...this.handleValidationsProperties(control),
+          ...this.handleCustomProperties(control),
+        },
+        validation: this.handleValidationMessages(control),
+        validators: this.handleValidators(control),
+      };
+
+      generatedControls.push(generatedControl);
+    });
+
+    return generatedControls;
+  }
+
+  private handleDefualtProperties(control: BackendControl) {
+    const defaultProperties = {
+      key: control.name,
+      type: control.type,
+      className: control.className || ''
+    };
+
+    return defaultProperties;
+  }
+
+  private handleHideExpression(control: BackendControl) {
+    if (control.conditionalView?.conditions?.length) {
+      return { hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.hideExpression(field) };
+    }
+
+    if (control.cascadingParentIndexes?.length) {
+      return { hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field) };
+    }
+
+    if (control.cascadingChildrenIndexes?.length && !control.cascadingParentIndexes?.length) {
+      return { hooks: { onInit: (parentField: any) => this.controlCascadingService.onInitHook(parentField) } };
+    }
+
+    return {};
+  }
+
+  // -----------------------------------------------------------
+
+  private handleDefualtTemplateOptionsProperties(control: BackendControl) {
+    const defaultProperties = {
+      index: control.index,
+      name: control.name,
+      label: control.label,
+      options: control.options || [],
+      placeholder: control.placeHolder,
+
+      isSubmitted: control.isSubmitted,
+      isValueDynamic: control.isValueDynamic,
+      isVisible: control.isVisible,
+      isVisibleInViewMode: control.isVisibleInViewMode
+    };
+
+    return defaultProperties;
+  }
+
+  private handleStyleProperties(control: BackendControl) {
+    let style: any = { fieldInlineStyle: {} };
+
+    // Your Logic Here...
+    style.fieldInlineStyle = control.style;
+
+    return style;
+  }
+
+  private handleCascadingProperties(control: BackendControl) {
+    return {
+      cascadingChildrenIndexes: control.cascadingChildrenIndexes || null,
+      cascadingParentIndexes: control.cascadingParentIndexes || null,
+    };
+  }
+
+  private handleConditionalViewProperties(control: BackendControl) {
+    let conditionalView = { conditionalView: control.conditionalView };
+
+    return conditionalView;
+  }
+
+  private handleValidationsProperties(control: BackendControl) {
+    let validations: Pick<FormlyTemplateOptions, 'required' | 'readOnly' | 'max' | 'min' | 'minLength' | 'maxLength' | 'pattern'> = {
+      readOnly: control.readOnly,
+      required: control.isRequired,
+    };
+
+    control.validations?.filter(each => each.name !== 'required').forEach(each => {
+      validations = { ...validations, [this.convertTheValidationNametoCamelCase(each.name)]: each.name === 'pattern' ? each.value : +each.value };
+    });
+
+    return validations;
+  }
+
+  private handleCustomProperties(control: BackendControl) {
+    if (control.type === FormControlTypes.DropDown) return this.handleDropdownProperties(control);
+    if (control.type === FormControlTypes.Table) return this.handleTableProperties(control);
+
+    return {};
+  }
+
+  private handleDropdownProperties(control: BackendControl) {
+    return {
+      // bindValue: 'key',
+      optionLabelPropertyName: 'text',
+      imagePropertyName: 'icon',
+      optionLayout: 'label',
+      selectedOptionLayout: 'label',
+      defaultValue: null,
+      isMultiSelect: control.isMultiSelect,
+      isCancelDelegation: control.isCancelDelegation,
+      isExternalDataSource: control.isExternalDataSource,
+      dataSourceId: control.dataSourceId,
+      dataSourceType: control.dataSourceType,
+      dataSourceUrl: control.dataSourceUrl,
+    };
+  }
+
+  private handleTableProperties(control: BackendControl) {
+    return {
+      controls: this.constructFormlyFields(control.controls as BackendControl[])
+    };
+  }
+
+  // -----------------------------------------------------------
+
+  private handleValidationMessages(control: BackendControl) {
+    let validation: { message: { [key: string]: string; }; } = { message: {} };
+    control.validations?.forEach(each => validation.message = { ...validation.message, [this.convertTheValidationNametoCamelCase(each.name)]: each.message });
+
+    return validation;
+  }
+
+  private handleValidators(control: BackendControl) {
+    return control.cutomValidators || null;
+  }
+
+  // -----------------------------------------------------------
+  // convertTheValidationNametoCamelCase
+  private convertTheValidationNametoCamelCase(validationName: string) {
+    if (validationName.includes('min') || validationName.includes('max')) {
+      const name = validationName.split('length');
+
+      if (name.length === 1) return validationName;
+      return `${name[0]}Length`;
+    }
+
+    return validationName;
+  }
 }

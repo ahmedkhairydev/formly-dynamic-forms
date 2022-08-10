@@ -19,7 +19,7 @@ export class ControlExpressionService {
       const newFields = fields.map(field => field.templateOptions) as any[],
         parentField = newFields.find(field => field.index === condition.parentFieldIndex),
         parentFieldValue = (field.form as FormGroup).get(parentField.name)?.value;
-
+        
       if (condition.validationName === 'value') {
         condition.validityStatus = parentFieldValue;
       }

@@ -1,34 +1,37 @@
+import { AbstractControl, ValidatorFn } from "@angular/forms";
+import { FormlyFieldConfig } from "@ngx-formly/core";
+import { Observable } from "rxjs";
 import { ValidationName, FormControlTypes } from "../enums";
 import { ConditionalView } from "./conditional-view.interface";
 import { Style } from "./style.interface";
 import { DropdownSubmissionInterface } from "./submission.interface";
 
-export interface BackendResponse {
+export interface BackendControl {
   id?: string;
   type?: FormControlTypes | string;
   value?: Array<DropdownSubmissionInterface | string>;
-  format?: null | string;
-  contentType?: null | string;
+  format?: string | null;
+  contentType?: string | null;
   index?: number;
   formCode?: null;
-  valuePathEn?: null | string;
-  valuePathAr?: null | string;
+  valuePathEn?: string | null;
+  valuePathAr?: string | null;
   readOnly?: boolean;
   isVisibleInViewMode?: boolean;
   isRequired?: boolean;
   isValueDynamic?: boolean;
-  dataSourceType?: null | string;
-  dataSourceUrl?: null | string;
-  dataSourceId?: null | string;
+  dataSourceType?: string | null;
+  dataSourceUrl?: string | null;
+  dataSourceId?: string | null;
   mappedValue?: null;
   name?: string;
   translations?: null;
   label?: string;
-  description?: null | string;
-  placeHolder?: string;
+  description?: string | null;
+  placeHolder?: string | null;
   isVisible?: boolean;
   roles?: any[] | null;
-  icon?: null | string;
+  icon?: string | null;
   style?: Style;
   validations?: Validation[];
   dependencies?: any[];
@@ -47,21 +50,31 @@ export interface BackendResponse {
   fileDetails?: FileDetail[];
   isImageThumbnail?: boolean;
   filesNumber?: number;
+  controls?: BackendControl[];
   additionalProperty01?: null;
   additionalProperty02?: null;
   additionalProperty03?: null;
   additionalProperty04?: null;
   [additionalProperty: string]: any;
+
+  // custom properties
+
+  // {
+  //   validation?: (string | ValidatorFn)[];
+  //   [key: string]: ((control: AbstractControl, field: FormlyFieldConfig) => boolean) | ({ expression: (control: AbstractControl, field: FormlyFieldConfig) => boolean, message: string | ((error: any, field: FormlyFieldConfig) => string | Observable<string>); });
+  // }
+  cutomValidators?: any;
+  className?: string;
 }
 
 interface Option {
   key?: string;
-  selectedKey?: null | string;
+  selectedKey?: string | null;
   text?: string;
-  icon?: null | string;
-  extra?: null | string;
-  label?: null | string;
-  value?: null | string | boolean;
+  icon?: string | null;
+  extra?: string | null;
+  label?: string | null;
+  value?: string | null | boolean;
 }
 
 interface FileDetail {

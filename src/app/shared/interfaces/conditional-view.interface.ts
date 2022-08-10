@@ -1,6 +1,6 @@
 export interface ConditionalView {
-    validConditions: number;
-    minimumAcceptableConditionsNumber: null;
+    validConditions: number | null;
+    minimumAcceptableConditionsNumber: number | null;
     conditions: Condition[] | null;
 }
 
