@@ -1480,13 +1480,11 @@ export class ConstructFormlyFieldsService {
   }
 
   private handleDefualtProperties(control: BackendControl) {
-    const defaultProperties = {
+    return {
       key: control.name,
       type: control.type,
       className: control.className || ''
     };
-
-    return defaultProperties;
   }
 
   private handleHideExpression(control: BackendControl) {
@@ -1541,22 +1539,20 @@ export class ConstructFormlyFieldsService {
   }
 
   private handleConditionalViewProperties(control: BackendControl) {
-    let conditionalView = { conditionalView: control.conditionalView };
-
-    return conditionalView;
+    return { conditionalView: control.conditionalView };
   }
 
   private handleValidationsProperties(control: BackendControl) {
-    let validations: Pick<FormlyTemplateOptions, 'required' | 'readOnly' | 'max' | 'min' | 'minLength' | 'maxLength' | 'pattern'> = {
+    let newValidations: Pick<FormlyTemplateOptions, 'required' | 'readOnly' | 'max' | 'min' | 'minLength' | 'maxLength' | 'pattern'> = {
       readOnly: control.readOnly,
       required: control.isRequired,
     };
 
     control.validations?.filter(each => each.name !== 'required').forEach(each => {
-      validations = { ...validations, [this.convertTheValidationNametoCamelCase(each.name)]: each.name === 'pattern' ? each.value : +each.value };
+      newValidations = { ...newValidations, [this.convertTheValidationNametoCamelCase(each.name)]: each.name === 'pattern' ? each.value : +each.value };
     });
 
-    return validations;
+    return newValidations;
   }
 
   private handleCustomProperties(control: BackendControl) {
