@@ -1,16 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
-interface DropdownSubmissionInterface {
-  key: string; text: string; selectedKey: string;
-}
-
-interface SubmissionInterface {
-  name: string;
-  value: (string | DropdownSubmissionInterface)[];
-  type: string;
-  label: string;
-}
+import { SubmissionInterface } from '../../interfaces';
 
 @Injectable({
   providedIn: 'root'

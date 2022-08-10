@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ControlJson } from '../../interfaces';
+import { BackendResponse } from '../../interfaces';
 import { ControlCascadingService } from '../control-cascading/control-cascading.service';
 import { ControlExpressionService } from '../control-expression/control-expression.service';
 
@@ -8,7 +8,7 @@ import { ControlExpressionService } from '../control-expression/control-expressi
 })
 export class ConstructFormlyFieldsService {
 
-  jsonControls: ControlJson[] = [];
+  jsonControls: BackendResponse[] = [];
 
   classes = [
     {
@@ -1154,4 +1154,6 @@ export class ConstructFormlyFieldsService {
       },
     ];
   }
+
+  // constructFormlyFields()
 }
