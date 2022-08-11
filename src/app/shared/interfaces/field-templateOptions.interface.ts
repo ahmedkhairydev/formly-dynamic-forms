@@ -12,10 +12,12 @@ export interface FieldTemplateOptions extends FormlyTemplateOptions {
   outerIcon?: string | null;
   fieldInlineStyle?: {} | null;
   conditionalView?: {} | null;
+  options: any[];
 
   dataSourceId?: string | null;
   dataSourceType?: string | null;
   dataSourceUrl?: string | null;
+  newSourceUrl?: string | null;
   cascadingChildrenIndexes?: number[] | null;
   cascadingParentIndexes?: number[] | null;
 }

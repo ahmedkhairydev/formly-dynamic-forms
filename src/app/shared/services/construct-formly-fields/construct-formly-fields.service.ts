@@ -1271,7 +1271,7 @@ export class ConstructFormlyFieldsService {
         },
         hooks: {
           onInit: (parentField: any) => {
-            this.controlCascadingService.onInitHook(parentField);
+            this.controlCascadingService.onInitCascadingHook(parentField);
           },
         },
       },
@@ -1292,7 +1292,7 @@ export class ConstructFormlyFieldsService {
           cascadingChildrenIndexes: null,
           dataSourceUrl: 'Value/GetDynamicByListCode/FacilityServicesWorkType?parameters={0}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.hideCascadingExpression(field),
         expressionProperties: {
           'templateOptions.disabled': (model: any, formState: any, field: any) => this.controlExpressionService.disabledExpression(field),
         }
@@ -1316,7 +1316,7 @@ export class ConstructFormlyFieldsService {
         },
         hooks: {
           onInit: (parentField: any) => {
-            this.controlCascadingService.onInitHook(parentField);
+            this.controlCascadingService.onInitCascadingHook(parentField);
           },
         },
       },
@@ -1337,7 +1337,7 @@ export class ConstructFormlyFieldsService {
           cascadingChildrenIndexes: [5, 6, 7],
           dataSourceUrl: 'Value/GetDynamicByListCode/Region?parameters={0}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.hideCascadingExpression(field),
       },
       {
         key: 'city',
@@ -1356,7 +1356,7 @@ export class ConstructFormlyFieldsService {
           cascadingChildrenIndexes: [6, 7],
           dataSourceUrl: 'Value/GetDynamicByListCode/City?parameters={0},{1}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.hideCascadingExpression(field),
       },
       {
         key: 'building',
@@ -1376,7 +1376,7 @@ export class ConstructFormlyFieldsService {
           dataSourceUrl:
             'Value/GetDynamicByListCode/Building?parameters={0},{1},{2}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.hideCascadingExpression(field),
       },
       {
         key: 'floor',
@@ -1396,7 +1396,7 @@ export class ConstructFormlyFieldsService {
           dataSourceUrl:
             'Value/GetDynamicByListCode/MobilyFloors?parameters={0},{1},{2},{3}',
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.hideCascadingExpression(field),
       },
 
       {
@@ -1445,7 +1445,7 @@ export class ConstructFormlyFieldsService {
             ]
           }
         },
-        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.hideExpression(field),
+        hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.hideConditionalViewExpression(field),
         expressionProperties: {
           'templateOptions.disabled': (model: any, formState: any, field: any) => this.controlExpressionService.disabledExpression(field),
         }
@@ -1489,15 +1489,15 @@ export class ConstructFormlyFieldsService {
 
   private handleHideExpression(control: BackendControl) {
     if (control.conditionalView?.conditions?.length) {
-      return { hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.hideExpression(field) };
+      return { hideExpression: (model: any, formState: any, field: any) => this.controlExpressionService.hideConditionalViewExpression(field) };
     }
 
     if (control.cascadingParentIndexes?.length) {
-      return { hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.cascading(field) };
+      return { hideExpression: (model: any, formState: any, field: any) => this.controlCascadingService.hideCascadingExpression(field) };
     }
 
     if (control.cascadingChildrenIndexes?.length && !control.cascadingParentIndexes?.length) {
-      return { hooks: { onInit: (parentField: any) => this.controlCascadingService.onInitHook(parentField) } };
+      return { hooks: { onInit: (parentField: any) => this.controlCascadingService.onInitCascadingHook(parentField) } };
     }
 
     return {};
@@ -1588,8 +1588,8 @@ export class ConstructFormlyFieldsService {
   // -----------------------------------------------------------
 
   private handleValidationMessages(control: BackendControl) {
-    let validation: { message: { [key: string]: string; }; } = { message: {} };
-    control.validations?.forEach(each => validation.message = { ...validation.message, [this.convertTheValidationNametoCamelCase(each.name)]: each.message });
+    let validation: { messages: { [key: string]: string; }; } = { messages: {} };
+    control.validations?.forEach(each => validation.messages = { ...validation.messages, [this.convertTheValidationNametoCamelCase(each.name)]: each.message });
 
     return validation;
   }

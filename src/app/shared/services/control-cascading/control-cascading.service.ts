@@ -1,62 +1,92 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormlyFieldConfig } from '@youxel/form';
-import { handleMultiLevelCascading, handleSingleCascading } from '../helpers';
+import { Subject, take, takeUntil } from 'rxjs';
+import { FormlyControl } from '../../interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ControlCascadingService {
 
-  constructor() { }
-  
-  cascading(field: any) {
-    const fields = (field.parent.fieldGroup as FormlyFieldConfig[]),
+  private destroy$: Subject<boolean> = new Subject<boolean>();
+
+  constructor(private httpService: HttpClient) { }
+
+  hideCascadingExpression(field: FormlyControl) {
+    const fields = (field.parent?.fieldGroup as FormlyControl[]),
       templateOptions = field.templateOptions,
-      parentIndex = templateOptions.cascadingParentIndexes[templateOptions.cascadingParentIndexes.length - 1],
-      parent = fields.find(field => field.templateOptions?.['index'] === parentIndex) as FormlyFieldConfig,
-      fieldControl = field.form.get(field.templateOptions?.['name']);
+      cascadingParentIndexes = templateOptions?.cascadingParentIndexes,
+      parentIndex = cascadingParentIndexes ? cascadingParentIndexes[cascadingParentIndexes.length - 1] : null,
+      parent = fields.find(field => field.templateOptions?.index === parentIndex) as FormlyControl,
+      fieldControl = field.form?.get(field.templateOptions?.name as string),
+      options = field.templateOptions?.options;
 
-    return !parent.form?.get(parent.templateOptions?.['name'])?.value || (!field.templateOptions.options?.length && !fieldControl?.value);
+    return !parent.form?.get(parent.templateOptions?.name as string)?.value || (!options?.length && !fieldControl?.value);
   }
 
-  // @ts-ignore: Unreachable code error
-  handleCascading({ field, form, fields }) {
-    const queryParams = field.dataSourceUrl.split('=')[1];
-    const hasMultiLevel = queryParams.split(',')[1];
-    const getApiData = this.getChildOptions;
-
-    if (hasMultiLevel) handleMultiLevelCascading({ field, form, fields, getApiData });
-    else handleSingleCascading({ field, form, fields, getApiData });
-  }
-
-  onInitHook(parentField: any) {
-    parentField.form.get(parentField.key)?.valueChanges.subscribe((value: any) => {
+  onInitCascadingHook(parentField: FormlyControl) {
+    parentField.form?.get(parentField.key)?.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value: any) => {
       if (value) {
-        const fields = (parentField.parent.fieldGroup as FormlyFieldConfig[]);
+        const fields = parentField.parent?.fieldGroup;
 
-        const firstChildIndex = parentField.templateOptions.cascadingChildrenIndexes[0],
-          firstChild = fields.find(field => field.templateOptions?.['index'] === firstChildIndex) as FormlyFieldConfig,
-          firstChildTemplateOptions = firstChild.templateOptions as any,
-          isCascading = firstChildTemplateOptions.cascadingParentIndexes;
+        const cascadingChildrenIndexes = parentField.templateOptions?.cascadingChildrenIndexes,
+          firstChildIndex = cascadingChildrenIndexes ? cascadingChildrenIndexes[0] : null,
+          firstChild = fields?.find(field => field.templateOptions?.['index'] === firstChildIndex) as FormlyControl,
+          firstChildTemplateOptions = firstChild?.templateOptions,
+          isCascading = firstChildTemplateOptions?.cascadingParentIndexes;
 
-        if (isCascading)
-          this.handleCascading({ field: firstChildTemplateOptions, form: parentField.form, fields: fields.map(field => field.templateOptions) });
+        if (isCascading) {
+          this.handleCascading(firstChild, () => {
+            if (firstChild.templateOptions?.cascadingChildrenIndexes?.length) {
+              const cascadingChildrenIndexes = parentField.templateOptions?.cascadingChildrenIndexes,
+                firstChildIndex = cascadingChildrenIndexes ? cascadingChildrenIndexes[0] : null,
+                firstChild = fields?.find(field => field.templateOptions?.['index'] === firstChildIndex) as FormlyControl;
 
-          if (firstChild.templateOptions?.['cascadingChildrenIndexes']?.length) {
-            setTimeout(() => {
-              const firstChildIndex = parentField.templateOptions.cascadingChildrenIndexes[0],
-                firstChild = fields.find(field => field.templateOptions?.['index'] === firstChildIndex) as FormlyFieldConfig;
-
-              firstChild.form?.get(firstChild.templateOptions?.['name'])?.reset();
-              this.onInitHook(firstChild);
-            }, 1000);
-          }
+              firstChild.form?.get(firstChild?.templateOptions?.name as string)?.reset();
+              this.onInitCascadingHook(firstChild);
+            }
+          });
+        }
       }
     });
   }
 
+  private handleCascading(field: FormlyControl, callbackFn: (options: any[]) => void) {
+    const newSourceUrl = this.changeUrlToParentValue(field),
+      isValidURL = this.isValidURL(newSourceUrl as string);
+
+    if (isValidURL) {
+      field.templateOptions!.newSourceUrl = newSourceUrl;
+      this.getOptions(field, (options: any[]) => callbackFn(options));
+    }
+  }
+
+  private changeUrlToParentValue(field: FormlyControl) {
+    const parentIndexs = field.templateOptions?.cascadingParentIndexes,
+      fields = field.parent?.fieldGroup,
+      parents = fields?.filter(field => parentIndexs?.includes(field.templateOptions?.['index'])) as FormlyControl[];
+
+    return parents?.reduce((acc, cur, index) => {
+      const parentControlValue = cur.form?.get(cur.key)?.value?.key || cur.form?.get(cur.key)?.value;
+      return acc?.replace(`{${index.toString()}}`, `${parentControlValue}`);
+    }, field.templateOptions?.dataSourceUrl);
+  }
+
+  private isValidURL(newSourceUrl: string) {
+    return !newSourceUrl.includes('{') || !newSourceUrl.includes('}');
+  }
+
+  private getOptions(field: FormlyControl, callbackFn: (options: any[]) => void) {
+    const newSourceUrl = field.templateOptions?.newSourceUrl;
+    console.log(newSourceUrl);
+    this.httpService.get<any[]>('https://jsonplaceholder.typicode.com/todos').pipe(take(1)).subscribe(res => {
+      field.templateOptions!.options = res.map(e => ({ key: e.id, text: e.title })) ?? [];
+      setTimeout(() => callbackFn(field.templateOptions!.options));
+    });
+  }
+
   // @ts-ignore: Unreachable code error
-  getChildOptions = (field) => {
+  private getChildOptions = (field) => {
     return;
     // this.httpService
     //   .get('listOfValues/api/' + field.newSourceUrl).pipe(take(1))
@@ -78,4 +108,10 @@ export class ControlCascadingService {
     //     error: (err) => { }
     //   });
   };
+
+  /* when leaving the component */
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 }

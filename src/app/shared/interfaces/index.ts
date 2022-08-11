@@ -1,4 +1,3 @@
-export { Cascading } from './cascading.interface';
 export { BackendControl } from './control-json.interface';
 export { FormlyControl } from './form-field.interface';
 export { SubmissionInterface } from './submission.interface';

@@ -1,6 +1,3 @@
-import { AbstractControl, ValidatorFn } from "@angular/forms";
-import { FormlyFieldConfig } from "@ngx-formly/core";
-import { Observable } from "rxjs";
 import { ValidationName, FormControlTypes } from "../enums";
 import { ConditionalView } from "./conditional-view.interface";
 import { Style } from "./style.interface";
@@ -8,7 +5,8 @@ import { DropdownSubmissionInterface } from "./submission.interface";
 
 export interface BackendControl {
   id?: string;
-  type?: FormControlTypes | string;
+  name: string;
+  type: FormControlTypes | string;
   value?: Array<DropdownSubmissionInterface | string>;
   format?: string | null;
   contentType?: string | null;
@@ -24,7 +22,6 @@ export interface BackendControl {
   dataSourceUrl?: string | null;
   dataSourceId?: string | null;
   mappedValue?: null;
-  name?: string;
   translations?: null;
   label?: string;
   description?: string | null;

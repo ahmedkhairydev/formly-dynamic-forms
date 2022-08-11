@@ -10,7 +10,7 @@ export class ControlExpressionService {
   // constructor(public httpService: HttpService) { }
   constructor() { }
 
-  hideExpression(field: any) {
+  hideConditionalViewExpression(field: any) {
     const fields = (field.parent.fieldGroup as FormlyFieldConfig[]),
       conditionalView = field.templateOptions?.conditionalView,
       conditions = conditionalView?.conditions as any[];
