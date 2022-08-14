@@ -1569,7 +1569,7 @@ export class ConstructFormlyFieldsService {
       imagePropertyName: 'icon',
       optionLayout: 'label',
       selectedOptionLayout: 'label',
-      defaultValue: null,
+      defaultValue: control.value?.length || null,
       isMultiSelect: control.isMultiSelect,
       isCancelDelegation: control.isCancelDelegation,
       isExternalDataSource: control.isExternalDataSource,

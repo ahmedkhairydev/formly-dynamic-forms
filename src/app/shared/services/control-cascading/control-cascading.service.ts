@@ -52,7 +52,7 @@ export class ControlCascadingService {
   }
 
   private handleCascading(field: FormlyControl, callbackFn: (options: any[]) => void) {
-    const newSourceUrl = this.changeUrlToParentValue(field),
+    const newSourceUrl = this.changeUrlWithParentValue(field),
       isValidURL = this.isValidURL(newSourceUrl as string);
 
     if (isValidURL) {
@@ -61,7 +61,7 @@ export class ControlCascadingService {
     }
   }
 
-  private changeUrlToParentValue(field: FormlyControl) {
+  private changeUrlWithParentValue(field: FormlyControl) {
     const parentIndexs = field.templateOptions?.cascadingParentIndexes,
       fields = field.parent?.fieldGroup,
       parents = fields?.filter(field => parentIndexs?.includes(field.templateOptions?.['index'])) as FormlyControl[];

@@ -21,6 +21,7 @@ interface DropdownSettings extends FormlyTemplateOptions {
   bindValue?: string; // the property of the option to bind with.
   label?: string; // dropdown label translate key
   defaultValue?: any; // default value
+  placeholder: string;
 }
 
 @Component({

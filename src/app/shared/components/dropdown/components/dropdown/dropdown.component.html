@@ -3,7 +3,7 @@
 
     <div class="dropdown">
         <p-dropdown [options]="to.options" [ngModel]="to.defaultValue" (ngModelChange)="onSelectItem($event)" [optionValue]="to.bindValue || ''"
-                    [disabled]="to.disabled" [formlyAttributes]="field">
+                    [disabled]="to.disabled" [formlyAttributes]="field" [placeholder]="to.placeholder">
             <ng-template let-selectedOption pTemplate="selectedItem">
                 <div class="option option-value" *ngIf="selectedOption">
                     <img [src]="selectedOption[to.imagePropertyName]" [ngClass]="{'margin': to.selectedOptionLayout !== OptionsLayout.image}"
