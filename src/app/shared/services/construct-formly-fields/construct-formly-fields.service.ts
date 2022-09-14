@@ -1564,12 +1564,8 @@ export class ConstructFormlyFieldsService {
 
   private handleDropdownProperties(control: BackendControl) {
     return {
-      // bindValue: 'key',
-      optionLabelPropertyName: 'text',
-      imagePropertyName: 'icon',
-      optionLayout: 'label',
-      selectedOptionLayout: 'label',
-      defaultValue: control.value?.length || null,
+      // optionValue: 'key',
+      labelPropertyName: 'text',
       isMultiSelect: control.isMultiSelect,
       isCancelDelegation: control.isCancelDelegation,
       isExternalDataSource: control.isExternalDataSource,

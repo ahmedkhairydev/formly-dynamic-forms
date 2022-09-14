@@ -1,28 +1,43 @@
-<div [style.width.px]="to.width">
-    <h3 class="m-0 dropdown-label" *ngIf="to.label">{{ to.label | translate }}</h3>
-
+<div class="dropdown-control-wrapper" [style.width.px]="to.width">
     <div class="dropdown">
-        <p-dropdown [options]="to.options" [ngModel]="to.defaultValue" (ngModelChange)="onSelectItem($event)" [optionValue]="to.bindValue || ''"
-                    [disabled]="to.disabled" [formlyAttributes]="field" [placeholder]="to.placeholder">
+        <p-dropdown [options]="(dropdownOptions | async) || []" [formControl]="formControl" [formlyAttributes]="field" [name]="key" [inputId]="id"
+                    [required]="to.required || false" [style]="to.style" [panelStyle]="to.panelStyle" [styleClass]="to.styleClass || ''"
+                    [panelStyleClass]="to.panelStyleClass || ''" [optionValue]="to.optionValue || ''" [optionLabel]="to.labelPropertyName || 'name'"
+                    [placeholder]="to.placeholder || ''" [disabled]="formControl.disabled" [readonly]="to.readonly || false" [filter]="to.filter || false"
+                    [filterValue]="to.filterValue || ''" [filterBy]="to.filterBy || ''" [filterMatchMode]="to.filterMatchMode || ''"
+                    [filterPlaceholder]="to.filterPlaceholder || ''" [filterLocale]="to.filterLocale || ''" [resetFilterOnHide]="to.resetFilterOnHide || false"
+                    [autofocusFilter]="to.autofocusFilter || false" [emptyMessage]="to.emptyMessage || 'No records found.'" [dataKey]="to.dataKey || ''"
+                    [emptyFilterMessage]="to.emptyFilterMessage || 'No records found.'" [autofocus]="to.autofocus || false" [autoDisplayFirst]="false"
+                    [dropdownIcon]="to.dropdownIcon || 'pi pi-chevron-down'" [showClear]="to.showClear || false" [group]="to.group || false"
+                    [optionGroupLabel]="to.optionGroupLabel || 'label'" [optionGroupChildren]="to.optionGroupChildren || 'items'"
+                    [showTransitionOptions]="to.showTransitionOptions || '.12s cubic-bezier(0, 0, 0.2, 1)'"
+                    [hideTransitionOptions]="to.hideTransitionOptions || '.1s linear'" [tooltip]="to.tooltip" [tooltipStyleClass]="to.tooltipStyleClass || ''"
+                    [tooltipPosition]="to.tooltipPosition || 'top'" [tooltipPositionStyle]="to.tooltipPositionStyle || 'absolute'" (onChange)="onSelectItem($event)"
+                    (onFilter)="onFilter($event)" (onClear)="onClear($event)">
             <ng-template let-selectedOption pTemplate="selectedItem">
-                <div class="option option-value" *ngIf="selectedOption">
-                    <img [src]="selectedOption[to.imagePropertyName]" [ngClass]="{'margin': to.selectedOptionLayout !== OptionsLayout.image}"
-                         *ngIf="selectedOption[to.imagePropertyName] && (to.selectedOptionLayout === OptionsLayout.image || to.selectedOptionLayout === OptionsLayout.both)" />
-
-                    <span
-                          *ngIf="to.selectedOptionLayout === OptionsLayout.label || to.selectedOptionLayout === OptionsLayout.both">{{ selectedOption[to.optionLabelPropertyName] }}</span>
+                <div class="option option-value">
+                    <ng-container *ngTemplateOutlet="to.selectedItemTemplate ? to.selectedItemTemplate : defaultTemplate; context: { $implicit: selectedOption }">
+                    </ng-container>
                 </div>
             </ng-template>
 
             <ng-template let-option pTemplate="item">
                 <div class="option">
-                    <img [src]="option[to.imagePropertyName]" class="margin" *ngIf="option[to.imagePropertyName] && to.optionLayout === OptionsLayout.both" />
-                    <span *ngIf="to.optionLayout === OptionsLayout.label || to.optionLayout === OptionsLayout.both">{{ option[to.optionLabelPropertyName] }}</span>
+                    <ng-container *ngTemplateOutlet="to.itemTemplate ? to.itemTemplate : defaultTemplate; context: { $implicit: option }"></ng-container>
                 </div>
+            </ng-template>
+
+            <ng-template let-group pTemplate="group" *ngIf="to.groupTemplate && to.group">
+                <ng-container *ngTemplateOutlet="to.groupTemplate; context: { $implicit: group }"></ng-container>
             </ng-template>
         </p-dropdown>
     </div>
 </div>
+
+<ng-template let-option #defaultTemplate>
+    <span>{{ option[to.labelPropertyName || 'name'] }}</span>
+</ng-template>
+
 
 <!-- 
    How to use?
@@ -35,12 +50,8 @@
         type: 'dropdown',
         templateOptions: {
             options: {yourDropdownOptions}, // list of the dropdown
-            optionLabelPropertyName: 'name', // option label the naming key to bind from the backend
-            imagePropertyName: 'image', // Image Property Name is the naming key to bind image property from the backend
-            optionLayout: 'both', // 'label' | 'both' -> Option Layout is the naming key to display the label or label & image together in options list
-            selectedOptionLayout: 'image', // 'label' | 'both' | 'image' -> selected Option Layout is the naming key to display image or label or both together in the selected UI
+            labelPropertyName: 'name', // option label the naming key to bind from the backend
             bindValue: '{optionPropertyName}', // the property of the option to bind with. it's optional.
-            defaultValue: this.form.get('{yourControlName}')?.value, // default value. it's optional.
             width: '', // width of the dropdown. it's optional.
             label: '' // dropdown label translate key. it's optional.
         }

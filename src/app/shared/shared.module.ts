@@ -12,6 +12,7 @@ import { DropdownModule } from './components';
   imports: [
     CommonModule,
     YouxelCoreModule,
+    YouxelFormModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
@@ -20,6 +21,7 @@ import { DropdownModule } from './components';
     DropdownModule,
   ],
   exports: [
+    YouxelCoreModule,
     YouxelFormModule,
     FormsModule,
     ReactiveFormsModule,
